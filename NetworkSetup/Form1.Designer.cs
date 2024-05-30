@@ -41,12 +41,28 @@
             zTEF601ToolStripMenuItem = new ToolStripMenuItem();
             analizeToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
+            groupBox2 = new GroupBox();
+            button1 = new Button();
+            textBox3 = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            textBox2 = new TextBox();
             groupBox1 = new GroupBox();
-            label1 = new Label();
+            comboBox1 = new ComboBox();
+            button2 = new Button();
             textBox1 = new TextBox();
+            textBox4 = new TextBox();
+            groupBox3 = new GroupBox();
+            label1 = new Label();
+            textBox5 = new TextBox();
+            button3 = new Button();
+            groupBox4 = new GroupBox();
+            groupBox5 = new GroupBox();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
+            groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // TextBoxLogs
@@ -133,39 +149,176 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(groupBox5);
+            panel1.Controls.Add(groupBox4);
+            panel1.Controls.Add(groupBox3);
+            panel1.Controls.Add(groupBox2);
             panel1.Controls.Add(groupBox1);
             panel1.Location = new Point(12, 27);
             panel1.Name = "panel1";
             panel1.Size = new Size(484, 372);
             panel1.TabIndex = 2;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(button1);
+            groupBox2.Controls.Add(textBox3);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(textBox2);
+            groupBox2.Location = new Point(6, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(478, 48);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Basic Info";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(397, 16);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 4;
+            button1.Text = "Save";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(283, 16);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(108, 23);
+            textBox3.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(212, 19);
+            label3.Name = "label3";
+            label3.Size = new Size(65, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Ntp Server:";
+            label3.TextAlign = ContentAlignment.TopRight;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 19);
+            label2.Name = "label2";
+            label2.Size = new Size(65, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Hostname:";
+            label2.TextAlign = ContentAlignment.TopRight;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(77, 16);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(129, 23);
+            textBox2.TabIndex = 0;
+            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(textBox1);
-            groupBox1.Location = new Point(3, 3);
+            groupBox1.Controls.Add(textBox4);
+            groupBox1.Location = new Point(6, 57);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(478, 56);
+            groupBox1.Size = new Size(478, 48);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "s";
+            groupBox1.Text = "Account";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
+            comboBox1.Location = new Point(294, 16);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(97, 23);
+            comboBox1.TabIndex = 7;
+            comboBox1.Text = "Privilege";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(397, 16);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 5;
+            button2.Text = "Add";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(148, 16);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Password";
+            textBox1.Size = new Size(140, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(6, 17);
+            textBox4.Name = "textBox4";
+            textBox4.PlaceholderText = "Username";
+            textBox4.Size = new Size(136, 23);
+            textBox4.TabIndex = 3;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(button3);
+            groupBox3.Controls.Add(textBox5);
+            groupBox3.Controls.Add(label1);
+            groupBox3.Location = new Point(6, 111);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(264, 49);
+            groupBox3.TabIndex = 3;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Snmp-server";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 30);
+            label1.Location = new Point(6, 19);
             label1.Name = "label1";
-            label1.Size = new Size(108, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Choose Hostname:";
+            label1.Size = new Size(35, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Host:";
             label1.TextAlign = ContentAlignment.TopRight;
             // 
-            // textBox1
+            // textBox5
             // 
-            textBox1.Location = new Point(120, 27);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(108, 23);
-            textBox1.TabIndex = 0;
+            textBox5.Location = new Point(47, 16);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(129, 23);
+            textBox5.TabIndex = 3;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(182, 16);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 6;
+            button3.Text = "Add";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Location = new Point(6, 166);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(264, 203);
+            groupBox4.TabIndex = 4;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Vlan";
+            // 
+            // groupBox5
+            // 
+            groupBox5.Location = new Point(276, 111);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(208, 258);
+            groupBox5.TabIndex = 5;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Interface";
             // 
             // Form1
             // 
@@ -181,8 +334,12 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -203,7 +360,21 @@
         private ToolStripMenuItem analizeToolStripMenuItem;
         private Panel panel1;
         private GroupBox groupBox1;
-        private Label label1;
         private TextBox textBox1;
+        private GroupBox groupBox2;
+        private TextBox textBox3;
+        private Label label3;
+        private Label label2;
+        private TextBox textBox2;
+        private Button button1;
+        private TextBox textBox4;
+        private Button button2;
+        private ComboBox comboBox1;
+        private GroupBox groupBox3;
+        private GroupBox groupBox5;
+        private GroupBox groupBox4;
+        private Button button3;
+        private TextBox textBox5;
+        private Label label1;
     }
 }

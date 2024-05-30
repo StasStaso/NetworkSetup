@@ -16,7 +16,7 @@ namespace NetworkSetup
 
             //TextBoxLogs
             TextBoxLogs.ReadOnly = true;
-            TextBoxLogs.Enter += new EventHandler(TextBoxLogs_Enter);
+            TextBoxLogs.Enter += new EventHandler(TextBoxLogs_Enter);            
         }
 
         private void TextBoxLogs_Enter(object sender, EventArgs e)

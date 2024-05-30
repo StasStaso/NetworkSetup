@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            TextBoxLogs = new TextBox();
+            SuspendLayout();
+            // 
+            // TextBoxLogs
+            // 
+            TextBoxLogs.Location = new Point(502, 12);
+            TextBoxLogs.Multiline = true;
+            TextBoxLogs.Name = "TextBoxLogs";
+            TextBoxLogs.ReadOnly = true;
+            TextBoxLogs.Size = new Size(270, 387);
+            TextBoxLogs.TabIndex = 0;
+            TextBoxLogs.Enter += TextBoxLogs_Enter;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(784, 411);
+            Controls.Add(TextBoxLogs);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox TextBoxLogs;
     }
 }

@@ -1,17 +1,28 @@
+using Microsoft.Extensions.DependencyInjection;
+using NetworkSetup.Service;
+using System;
+
 namespace NetworkSetup
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(serviceProvider.GetRequiredService<Form1>());
+        }
+
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services.AddTransient<Form1>();
+            services.AddTransient<InputVlan>();
+            services.AddSingleton<VlanService>(); // Зареєструємо VlanService як Singleton
         }
     }
 }

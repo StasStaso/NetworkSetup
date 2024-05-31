@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetworkSetup.Model
 {
-    internal class Vlan
+    public class Vlan
     {
         public string Id { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

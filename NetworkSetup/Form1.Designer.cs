@@ -379,6 +379,7 @@
             btn_ClearVlanField.TabIndex = 14;
             btn_ClearVlanField.Text = "Show Vlan";
             btn_ClearVlanField.UseVisualStyleBackColor = true;
+            btn_ClearVlanField.Click += btn_ClearVlanField_Click;
             // 
             // btn_AddVlan
             // 

@@ -4,8 +4,13 @@ namespace NetworkSetup
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private readonly VlanService _vlanService;
+        private readonly InputVlan _inputVlan;
+
+        public Form1(VlanService vlanService)
         {
+            _vlanService = vlanService;
+
             InitializeComponent();
 
             // Встановлення властивостей форми
@@ -71,15 +76,28 @@ namespace NetworkSetup
 
         private void button8_Click(object sender, EventArgs e)
         {
-            using (InputVlan inputVlan = new InputVlan())
-            {
-                inputVlan.ShowDialog();
-            }
+            InputVlan inputVlan = new InputVlan(_vlanService);
+
+            inputVlan.Show();
         }
 
         private void btn_AddVlan_Click(object sender, EventArgs e)
         {
-            
+            _vlanService.Add(textBox_VlanId.Text,
+                textBox_VlanDescription.Text,
+                textBox_VlanIpAddress.Text);
+        }
+
+        private void btn_ClearVlanField_Click(object sender, EventArgs e)
+        {
+            string vlans = "";
+
+            foreach (var item in _vlanService.VlanList)
+            {
+                vlans += item.Id + ";";
+            }
+
+            MessageBox.Show($"Vlan : {vlans}");
         }
     }
 }

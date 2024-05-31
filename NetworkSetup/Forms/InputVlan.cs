@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkSetup.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,12 @@ namespace NetworkSetup
 {
     public partial class InputVlan : Form
     {
-        public InputVlan()
+        private readonly VlanService _vlanService;
+
+        public InputVlan(VlanService vlanService)
         {
+            _vlanService = vlanService;
+
             InitializeComponent();
 
             Label labelAllVlans = new Label
@@ -43,8 +48,9 @@ namespace NetworkSetup
             this.Controls.Add(labelTrunkHeader);
             this.Controls.Add(labelAllowedHeader);
 
-            // Генерація елементів на основі кількості VLAN-ів
-            int numberOfVlans = 5; // Змінити на потрібну кількість VLAN-ів
+
+
+            int numberOfVlans = _vlanService.VlanList.Count; // Змінити на потрібну кількість VLAN-ів
             GenerateVlanControls(numberOfVlans);
 
             // Встановлення висоти форми залежно від кількості VLAN-ів

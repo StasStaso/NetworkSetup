@@ -2,7 +2,7 @@
 
 namespace NetworkSetup.Service
 {
-    internal class VlanService
+    public class VlanService
     {
         public List<Vlan> VlanList { get; private set; }
 
@@ -17,11 +17,6 @@ namespace NetworkSetup.Service
             { 
                 Id = id, Description = description, IpAddress = ipAddress           
             });
-        }
-
-        public List<Vlan> GetVlan() 
-        {
-            return VlanList;
         }
     }
 }

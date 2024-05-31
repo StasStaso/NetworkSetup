@@ -388,6 +388,7 @@
             btn_AddVlan.TabIndex = 13;
             btn_AddVlan.Text = "Add";
             btn_AddVlan.UseVisualStyleBackColor = true;
+            btn_AddVlan.Click += btn_AddVlan_Click;
             // 
             // label6
             // 

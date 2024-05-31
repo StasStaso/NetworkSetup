@@ -1,3 +1,5 @@
+using NetworkSetup.Service;
+
 namespace NetworkSetup
 {
     public partial class Form1 : Form
@@ -73,6 +75,11 @@ namespace NetworkSetup
             {
                 inputVlan.ShowDialog();
             }
+        }
+
+        private void btn_AddVlan_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

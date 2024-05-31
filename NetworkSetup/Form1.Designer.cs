@@ -42,6 +42,17 @@
             analizeToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             groupBox5 = new GroupBox();
+            groupBox7 = new GroupBox();
+            label10 = new Label();
+            textBox10 = new TextBox();
+            button7 = new Button();
+            textBox9 = new TextBox();
+            comboBox5 = new ComboBox();
+            label9 = new Label();
+            comboBox4 = new ComboBox();
+            label8 = new Label();
+            comboBox3 = new ComboBox();
+            button8 = new Button();
             groupBox4 = new GroupBox();
             button4 = new Button();
             comboBox2 = new ComboBox();
@@ -70,8 +81,11 @@
             button2 = new Button();
             textBox1 = new TextBox();
             textBox4 = new TextBox();
+            button9 = new Button();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox7.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -85,7 +99,7 @@
             TextBoxLogs.Multiline = true;
             TextBoxLogs.Name = "TextBoxLogs";
             TextBoxLogs.ReadOnly = true;
-            TextBoxLogs.Size = new Size(270, 372);
+            TextBoxLogs.Size = new Size(270, 329);
             TextBoxLogs.TabIndex = 0;
             TextBoxLogs.Text = "***************************************************\r\n******************NetworkSetup******************\r\n***************************************************\r\n";
             TextBoxLogs.Enter += TextBoxLogs_Enter;
@@ -176,12 +190,124 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(groupBox7);
+            groupBox5.Controls.Add(comboBox3);
+            groupBox5.Controls.Add(button8);
             groupBox5.Location = new Point(276, 111);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(208, 258);
             groupBox5.TabIndex = 5;
             groupBox5.TabStop = false;
             groupBox5.Text = "Interface";
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(label10);
+            groupBox7.Controls.Add(textBox10);
+            groupBox7.Controls.Add(button7);
+            groupBox7.Controls.Add(textBox9);
+            groupBox7.Controls.Add(comboBox5);
+            groupBox7.Controls.Add(label9);
+            groupBox7.Controls.Add(comboBox4);
+            groupBox7.Controls.Add(label8);
+            groupBox7.Location = new Point(6, 55);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(196, 163);
+            groupBox7.TabIndex = 9;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Interface config";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(7, 78);
+            label10.Name = "label10";
+            label10.Size = new Size(33, 15);
+            label10.TabIndex = 14;
+            label10.Text = "Vlan:";
+            label10.TextAlign = ContentAlignment.TopRight;
+            // 
+            // textBox10
+            // 
+            textBox10.Location = new Point(54, 75);
+            textBox10.Name = "textBox10";
+            textBox10.PlaceholderText = "2;10;201";
+            textBox10.Size = new Size(136, 23);
+            textBox10.TabIndex = 13;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(6, 133);
+            button7.Name = "button7";
+            button7.Size = new Size(183, 23);
+            button7.TabIndex = 10;
+            button7.Text = "Modify";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // textBox9
+            // 
+            textBox9.Location = new Point(6, 104);
+            textBox9.Name = "textBox9";
+            textBox9.PlaceholderText = "Description";
+            textBox9.Size = new Size(184, 23);
+            textBox9.TabIndex = 5;
+            // 
+            // comboBox5
+            // 
+            comboBox5.FormattingEnabled = true;
+            comboBox5.Items.AddRange(new object[] { "auto", "full", "half", "fx" });
+            comboBox5.Location = new Point(54, 46);
+            comboBox5.Name = "comboBox5";
+            comboBox5.Size = new Size(136, 23);
+            comboBox5.TabIndex = 12;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(6, 49);
+            label9.Name = "label9";
+            label9.Size = new Size(47, 15);
+            label9.TabIndex = 11;
+            label9.Text = "Duplex:";
+            label9.TextAlign = ContentAlignment.TopRight;
+            // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Items.AddRange(new object[] { "10", "100", "1G" });
+            comboBox4.Location = new Point(54, 17);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(136, 23);
+            comboBox4.TabIndex = 10;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(6, 19);
+            label8.Name = "label8";
+            label8.Size = new Size(42, 15);
+            label8.TabIndex = 3;
+            label8.Text = "Speed:";
+            label8.TextAlign = ContentAlignment.TopRight;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "Ethernet 1/0/1", "Ethernet 1/0/2", "Ethernet 1/0/3", "Ethernet 1/0/4", "Ethernet 1/0/5", "Ethernet 1/0/6", "Ethernet 1/0/7" });
+            comboBox3.Location = new Point(6, 22);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(196, 23);
+            comboBox3.TabIndex = 8;
+            comboBox3.Text = "Interface";
+            // 
+            // button8
+            // 
+            button8.Location = new Point(6, 224);
+            button8.Name = "button8";
+            button8.Size = new Size(196, 28);
+            button8.TabIndex = 7;
+            button8.Text = "Config Port";
+            button8.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -454,20 +580,33 @@
             textBox4.Size = new Size(136, 23);
             textBox4.TabIndex = 3;
             // 
+            // button9
+            // 
+            button9.Location = new Point(502, 361);
+            button9.Name = "button9";
+            button9.Size = new Size(270, 38);
+            button9.TabIndex = 10;
+            button9.Text = "Save to TXT";
+            button9.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 411);
+            Controls.Add(button9);
             Controls.Add(panel1);
             Controls.Add(TextBoxLogs);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Form1";
+            Text = "Network SetUp";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox6.ResumeLayout(false);
@@ -526,5 +665,17 @@
         private Button button4;
         private Button button6;
         private Button button5;
+        private GroupBox groupBox7;
+        private ComboBox comboBox3;
+        private Button button8;
+        private Button button7;
+        private TextBox textBox9;
+        private ComboBox comboBox5;
+        private Label label9;
+        private ComboBox comboBox4;
+        private Label label8;
+        private Label label10;
+        private TextBox textBox10;
+        private Button button9;
     }
 }

@@ -44,44 +44,44 @@
             groupBox5 = new GroupBox();
             groupBox7 = new GroupBox();
             label10 = new Label();
-            textBox10 = new TextBox();
-            button7 = new Button();
-            textBox9 = new TextBox();
-            comboBox5 = new ComboBox();
+            textBox_InterfaceInputVlan = new TextBox();
+            btn_InterfaceModify = new Button();
+            textBox_InterfaceDescription = new TextBox();
+            comboBox_InterfaceDuplex = new ComboBox();
             label9 = new Label();
-            comboBox4 = new ComboBox();
+            comboBox_InterfaceSpeed = new ComboBox();
             label8 = new Label();
-            comboBox3 = new ComboBox();
+            comboBoxInterface = new ComboBox();
             button8 = new Button();
             groupBox4 = new GroupBox();
-            button4 = new Button();
-            comboBox2 = new ComboBox();
+            btn_LoadActionVlan = new Button();
+            comboBox_ActionVlan = new ComboBox();
             label7 = new Label();
             groupBox6 = new GroupBox();
-            button6 = new Button();
-            button5 = new Button();
+            btn_ClearVlanField = new Button();
+            btn_AddVlan = new Button();
             label6 = new Label();
             label5 = new Label();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
-            textBox6 = new TextBox();
+            textBox_VlanIpAddress = new TextBox();
+            textBox_VlanDescription = new TextBox();
+            textBox_VlanId = new TextBox();
             label4 = new Label();
             groupBox3 = new GroupBox();
-            button3 = new Button();
-            textBox5 = new TextBox();
+            btn_AddSNMP = new Button();
+            textBox_HostSNMP = new TextBox();
             label1 = new Label();
             groupBox2 = new GroupBox();
-            button1 = new Button();
-            textBox3 = new TextBox();
-            label3 = new Label();
-            label2 = new Label();
-            textBox2 = new TextBox();
+            btn_SaveBasicInfo = new Button();
+            textBox_NtpServer = new TextBox();
+            label_NtpServer = new Label();
+            label_HostName = new Label();
+            textBox_HostName = new TextBox();
             groupBox1 = new GroupBox();
-            comboBox1 = new ComboBox();
-            button2 = new Button();
-            textBox1 = new TextBox();
-            textBox4 = new TextBox();
-            button9 = new Button();
+            comboBox_Privilege = new ComboBox();
+            btn_AddAccount = new Button();
+            textBox_Password = new TextBox();
+            textBox_UserName = new TextBox();
+            btn_SaveToTXT = new Button();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -191,7 +191,7 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(groupBox7);
-            groupBox5.Controls.Add(comboBox3);
+            groupBox5.Controls.Add(comboBoxInterface);
             groupBox5.Controls.Add(button8);
             groupBox5.Location = new Point(276, 111);
             groupBox5.Name = "groupBox5";
@@ -203,12 +203,12 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(label10);
-            groupBox7.Controls.Add(textBox10);
-            groupBox7.Controls.Add(button7);
-            groupBox7.Controls.Add(textBox9);
-            groupBox7.Controls.Add(comboBox5);
+            groupBox7.Controls.Add(textBox_InterfaceInputVlan);
+            groupBox7.Controls.Add(btn_InterfaceModify);
+            groupBox7.Controls.Add(textBox_InterfaceDescription);
+            groupBox7.Controls.Add(comboBox_InterfaceDuplex);
             groupBox7.Controls.Add(label9);
-            groupBox7.Controls.Add(comboBox4);
+            groupBox7.Controls.Add(comboBox_InterfaceSpeed);
             groupBox7.Controls.Add(label8);
             groupBox7.Location = new Point(6, 55);
             groupBox7.Name = "groupBox7";
@@ -227,39 +227,39 @@
             label10.Text = "Vlan:";
             label10.TextAlign = ContentAlignment.TopRight;
             // 
-            // textBox10
+            // textBox_InterfaceInputVlan
             // 
-            textBox10.Location = new Point(54, 75);
-            textBox10.Name = "textBox10";
-            textBox10.PlaceholderText = "2;10;201";
-            textBox10.Size = new Size(136, 23);
-            textBox10.TabIndex = 13;
+            textBox_InterfaceInputVlan.Location = new Point(54, 75);
+            textBox_InterfaceInputVlan.Name = "textBox_InterfaceInputVlan";
+            textBox_InterfaceInputVlan.PlaceholderText = "2;10;201";
+            textBox_InterfaceInputVlan.Size = new Size(136, 23);
+            textBox_InterfaceInputVlan.TabIndex = 13;
             // 
-            // button7
+            // btn_InterfaceModify
             // 
-            button7.Location = new Point(6, 133);
-            button7.Name = "button7";
-            button7.Size = new Size(183, 23);
-            button7.TabIndex = 10;
-            button7.Text = "Modify";
-            button7.UseVisualStyleBackColor = true;
+            btn_InterfaceModify.Location = new Point(6, 133);
+            btn_InterfaceModify.Name = "btn_InterfaceModify";
+            btn_InterfaceModify.Size = new Size(183, 23);
+            btn_InterfaceModify.TabIndex = 10;
+            btn_InterfaceModify.Text = "Modify";
+            btn_InterfaceModify.UseVisualStyleBackColor = true;
             // 
-            // textBox9
+            // textBox_InterfaceDescription
             // 
-            textBox9.Location = new Point(6, 104);
-            textBox9.Name = "textBox9";
-            textBox9.PlaceholderText = "Description";
-            textBox9.Size = new Size(184, 23);
-            textBox9.TabIndex = 5;
+            textBox_InterfaceDescription.Location = new Point(6, 104);
+            textBox_InterfaceDescription.Name = "textBox_InterfaceDescription";
+            textBox_InterfaceDescription.PlaceholderText = "Description";
+            textBox_InterfaceDescription.Size = new Size(184, 23);
+            textBox_InterfaceDescription.TabIndex = 5;
             // 
-            // comboBox5
+            // comboBox_InterfaceDuplex
             // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Items.AddRange(new object[] { "auto", "full", "half", "fx" });
-            comboBox5.Location = new Point(54, 46);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(136, 23);
-            comboBox5.TabIndex = 12;
+            comboBox_InterfaceDuplex.FormattingEnabled = true;
+            comboBox_InterfaceDuplex.Items.AddRange(new object[] { "auto", "full", "half", "fx" });
+            comboBox_InterfaceDuplex.Location = new Point(54, 46);
+            comboBox_InterfaceDuplex.Name = "comboBox_InterfaceDuplex";
+            comboBox_InterfaceDuplex.Size = new Size(136, 23);
+            comboBox_InterfaceDuplex.TabIndex = 12;
             // 
             // label9
             // 
@@ -271,14 +271,14 @@
             label9.Text = "Duplex:";
             label9.TextAlign = ContentAlignment.TopRight;
             // 
-            // comboBox4
+            // comboBox_InterfaceSpeed
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "10", "100", "1G" });
-            comboBox4.Location = new Point(54, 17);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(136, 23);
-            comboBox4.TabIndex = 10;
+            comboBox_InterfaceSpeed.FormattingEnabled = true;
+            comboBox_InterfaceSpeed.Items.AddRange(new object[] { "10", "100", "1G" });
+            comboBox_InterfaceSpeed.Location = new Point(54, 17);
+            comboBox_InterfaceSpeed.Name = "comboBox_InterfaceSpeed";
+            comboBox_InterfaceSpeed.Size = new Size(136, 23);
+            comboBox_InterfaceSpeed.TabIndex = 10;
             // 
             // label8
             // 
@@ -290,15 +290,15 @@
             label8.Text = "Speed:";
             label8.TextAlign = ContentAlignment.TopRight;
             // 
-            // comboBox3
+            // comboBoxInterface
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Ethernet 1/0/1", "Ethernet 1/0/2", "Ethernet 1/0/3", "Ethernet 1/0/4", "Ethernet 1/0/5", "Ethernet 1/0/6", "Ethernet 1/0/7" });
-            comboBox3.Location = new Point(6, 22);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(196, 23);
-            comboBox3.TabIndex = 8;
-            comboBox3.Text = "Interface";
+            comboBoxInterface.FormattingEnabled = true;
+            comboBoxInterface.Items.AddRange(new object[] { "Ethernet 1/0/1", "Ethernet 1/0/2", "Ethernet 1/0/3", "Ethernet 1/0/4", "Ethernet 1/0/5", "Ethernet 1/0/6", "Ethernet 1/0/7" });
+            comboBoxInterface.Location = new Point(6, 22);
+            comboBoxInterface.Name = "comboBoxInterface";
+            comboBoxInterface.Size = new Size(196, 23);
+            comboBoxInterface.TabIndex = 8;
+            comboBoxInterface.Text = "Interface";
             // 
             // button8
             // 
@@ -311,8 +311,8 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(button4);
-            groupBox4.Controls.Add(comboBox2);
+            groupBox4.Controls.Add(btn_LoadActionVlan);
+            groupBox4.Controls.Add(comboBox_ActionVlan);
             groupBox4.Controls.Add(label7);
             groupBox4.Controls.Add(groupBox6);
             groupBox4.Location = new Point(6, 166);
@@ -322,24 +322,24 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Vlan";
             // 
-            // button4
+            // btn_LoadActionVlan
             // 
-            button4.Location = new Point(182, 16);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 7;
-            button4.Text = "Load";
-            button4.UseVisualStyleBackColor = true;
+            btn_LoadActionVlan.Location = new Point(182, 16);
+            btn_LoadActionVlan.Name = "btn_LoadActionVlan";
+            btn_LoadActionVlan.Size = new Size(75, 23);
+            btn_LoadActionVlan.TabIndex = 7;
+            btn_LoadActionVlan.Text = "Load";
+            btn_LoadActionVlan.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // comboBox_ActionVlan
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Add", "Remove" });
-            comboBox2.Location = new Point(57, 16);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(119, 23);
-            comboBox2.TabIndex = 8;
-            comboBox2.Text = "Add";
+            comboBox_ActionVlan.FormattingEnabled = true;
+            comboBox_ActionVlan.Items.AddRange(new object[] { "Add", "Remove" });
+            comboBox_ActionVlan.Location = new Point(57, 16);
+            comboBox_ActionVlan.Name = "comboBox_ActionVlan";
+            comboBox_ActionVlan.Size = new Size(119, 23);
+            comboBox_ActionVlan.TabIndex = 8;
+            comboBox_ActionVlan.Text = "Add";
             // 
             // label7
             // 
@@ -353,13 +353,13 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(button6);
-            groupBox6.Controls.Add(button5);
+            groupBox6.Controls.Add(btn_ClearVlanField);
+            groupBox6.Controls.Add(btn_AddVlan);
             groupBox6.Controls.Add(label6);
             groupBox6.Controls.Add(label5);
-            groupBox6.Controls.Add(textBox8);
-            groupBox6.Controls.Add(textBox7);
-            groupBox6.Controls.Add(textBox6);
+            groupBox6.Controls.Add(textBox_VlanIpAddress);
+            groupBox6.Controls.Add(textBox_VlanDescription);
+            groupBox6.Controls.Add(textBox_VlanId);
             groupBox6.Controls.Add(label4);
             groupBox6.Location = new Point(6, 45);
             groupBox6.Name = "groupBox6";
@@ -368,23 +368,23 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "New Vlan";
             // 
-            // button6
+            // btn_ClearVlanField
             // 
-            button6.Location = new Point(6, 123);
-            button6.Name = "button6";
-            button6.Size = new Size(239, 23);
-            button6.TabIndex = 14;
-            button6.Text = "Clear";
-            button6.UseVisualStyleBackColor = true;
+            btn_ClearVlanField.Location = new Point(6, 123);
+            btn_ClearVlanField.Name = "btn_ClearVlanField";
+            btn_ClearVlanField.Size = new Size(239, 23);
+            btn_ClearVlanField.TabIndex = 14;
+            btn_ClearVlanField.Text = "Clear";
+            btn_ClearVlanField.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btn_AddVlan
             // 
-            button5.Location = new Point(6, 95);
-            button5.Name = "button5";
-            button5.Size = new Size(239, 23);
-            button5.TabIndex = 13;
-            button5.Text = "Add";
-            button5.UseVisualStyleBackColor = true;
+            btn_AddVlan.Location = new Point(6, 95);
+            btn_AddVlan.Name = "btn_AddVlan";
+            btn_AddVlan.Size = new Size(239, 23);
+            btn_AddVlan.TabIndex = 13;
+            btn_AddVlan.Text = "Add";
+            btn_AddVlan.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -406,26 +406,26 @@
             label5.Text = "Description:";
             label5.TextAlign = ContentAlignment.TopRight;
             // 
-            // textBox8
+            // textBox_VlanIpAddress
             // 
-            textBox8.Location = new Point(82, 66);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(163, 23);
-            textBox8.TabIndex = 10;
+            textBox_VlanIpAddress.Location = new Point(82, 66);
+            textBox_VlanIpAddress.Name = "textBox_VlanIpAddress";
+            textBox_VlanIpAddress.Size = new Size(163, 23);
+            textBox_VlanIpAddress.TabIndex = 10;
             // 
-            // textBox7
+            // textBox_VlanDescription
             // 
-            textBox7.Location = new Point(82, 40);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(163, 23);
-            textBox7.TabIndex = 9;
+            textBox_VlanDescription.Location = new Point(82, 40);
+            textBox_VlanDescription.Name = "textBox_VlanDescription";
+            textBox_VlanDescription.Size = new Size(163, 23);
+            textBox_VlanDescription.TabIndex = 9;
             // 
-            // textBox6
+            // textBox_VlanId
             // 
-            textBox6.Location = new Point(82, 16);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(163, 23);
-            textBox6.TabIndex = 7;
+            textBox_VlanId.Location = new Point(82, 16);
+            textBox_VlanId.Name = "textBox_VlanId";
+            textBox_VlanId.Size = new Size(163, 23);
+            textBox_VlanId.TabIndex = 7;
             // 
             // label4
             // 
@@ -439,8 +439,8 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(button3);
-            groupBox3.Controls.Add(textBox5);
+            groupBox3.Controls.Add(btn_AddSNMP);
+            groupBox3.Controls.Add(textBox_HostSNMP);
             groupBox3.Controls.Add(label1);
             groupBox3.Location = new Point(6, 111);
             groupBox3.Name = "groupBox3";
@@ -449,21 +449,21 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Snmp-server";
             // 
-            // button3
+            // btn_AddSNMP
             // 
-            button3.Location = new Point(182, 16);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 6;
-            button3.Text = "Add";
-            button3.UseVisualStyleBackColor = true;
+            btn_AddSNMP.Location = new Point(182, 16);
+            btn_AddSNMP.Name = "btn_AddSNMP";
+            btn_AddSNMP.Size = new Size(75, 23);
+            btn_AddSNMP.TabIndex = 6;
+            btn_AddSNMP.Text = "Add";
+            btn_AddSNMP.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // textBox_HostSNMP
             // 
-            textBox5.Location = new Point(47, 16);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(129, 23);
-            textBox5.TabIndex = 3;
+            textBox_HostSNMP.Location = new Point(47, 16);
+            textBox_HostSNMP.Name = "textBox_HostSNMP";
+            textBox_HostSNMP.Size = new Size(129, 23);
+            textBox_HostSNMP.TabIndex = 3;
             // 
             // label1
             // 
@@ -477,11 +477,11 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(button1);
-            groupBox2.Controls.Add(textBox3);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(btn_SaveBasicInfo);
+            groupBox2.Controls.Add(textBox_NtpServer);
+            groupBox2.Controls.Add(label_NtpServer);
+            groupBox2.Controls.Add(label_HostName);
+            groupBox2.Controls.Add(textBox_HostName);
             groupBox2.Location = new Point(6, 3);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(478, 48);
@@ -489,55 +489,55 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Basic Info";
             // 
-            // button1
+            // btn_SaveBasicInfo
             // 
-            button1.Location = new Point(397, 16);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 4;
-            button1.Text = "Save";
-            button1.UseVisualStyleBackColor = true;
+            btn_SaveBasicInfo.Location = new Point(397, 16);
+            btn_SaveBasicInfo.Name = "btn_SaveBasicInfo";
+            btn_SaveBasicInfo.Size = new Size(75, 23);
+            btn_SaveBasicInfo.TabIndex = 4;
+            btn_SaveBasicInfo.Text = "Save";
+            btn_SaveBasicInfo.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // textBox_NtpServer
             // 
-            textBox3.Location = new Point(283, 16);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(108, 23);
-            textBox3.TabIndex = 3;
+            textBox_NtpServer.Location = new Point(283, 16);
+            textBox_NtpServer.Name = "textBox_NtpServer";
+            textBox_NtpServer.Size = new Size(108, 23);
+            textBox_NtpServer.TabIndex = 3;
             // 
-            // label3
+            // label_NtpServer
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(212, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(65, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Ntp Server:";
-            label3.TextAlign = ContentAlignment.TopRight;
+            label_NtpServer.AutoSize = true;
+            label_NtpServer.Location = new Point(212, 19);
+            label_NtpServer.Name = "label_NtpServer";
+            label_NtpServer.Size = new Size(65, 15);
+            label_NtpServer.TabIndex = 2;
+            label_NtpServer.Text = "Ntp Server:";
+            label_NtpServer.TextAlign = ContentAlignment.TopRight;
             // 
-            // label2
+            // label_HostName
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(6, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(65, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Hostname:";
-            label2.TextAlign = ContentAlignment.TopRight;
+            label_HostName.AutoSize = true;
+            label_HostName.Location = new Point(6, 19);
+            label_HostName.Name = "label_HostName";
+            label_HostName.Size = new Size(65, 15);
+            label_HostName.TabIndex = 1;
+            label_HostName.Text = "Hostname:";
+            label_HostName.TextAlign = ContentAlignment.TopRight;
             // 
-            // textBox2
+            // textBox_HostName
             // 
-            textBox2.Location = new Point(77, 16);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(129, 23);
-            textBox2.TabIndex = 0;
+            textBox_HostName.Location = new Point(77, 16);
+            textBox_HostName.Name = "textBox_HostName";
+            textBox_HostName.Size = new Size(129, 23);
+            textBox_HostName.TabIndex = 0;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(textBox4);
+            groupBox1.Controls.Add(comboBox_Privilege);
+            groupBox1.Controls.Add(btn_AddAccount);
+            groupBox1.Controls.Add(textBox_Password);
+            groupBox1.Controls.Add(textBox_UserName);
             groupBox1.Location = new Point(6, 57);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(478, 48);
@@ -545,56 +545,56 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Account";
             // 
-            // comboBox1
+            // comboBox_Privilege
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
-            comboBox1.Location = new Point(294, 16);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(97, 23);
-            comboBox1.TabIndex = 7;
-            comboBox1.Text = "Privilege";
+            comboBox_Privilege.FormattingEnabled = true;
+            comboBox_Privilege.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
+            comboBox_Privilege.Location = new Point(294, 16);
+            comboBox_Privilege.Name = "comboBox_Privilege";
+            comboBox_Privilege.Size = new Size(97, 23);
+            comboBox_Privilege.TabIndex = 7;
+            comboBox_Privilege.Text = "Privilege";
             // 
-            // button2
+            // btn_AddAccount
             // 
-            button2.Location = new Point(397, 16);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 5;
-            button2.Text = "Add";
-            button2.UseVisualStyleBackColor = true;
+            btn_AddAccount.Location = new Point(397, 16);
+            btn_AddAccount.Name = "btn_AddAccount";
+            btn_AddAccount.Size = new Size(75, 23);
+            btn_AddAccount.TabIndex = 5;
+            btn_AddAccount.Text = "Add";
+            btn_AddAccount.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBox_Password
             // 
-            textBox1.Location = new Point(148, 16);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Password";
-            textBox1.Size = new Size(140, 23);
-            textBox1.TabIndex = 0;
+            textBox_Password.Location = new Point(148, 16);
+            textBox_Password.Name = "textBox_Password";
+            textBox_Password.PlaceholderText = "Password";
+            textBox_Password.Size = new Size(140, 23);
+            textBox_Password.TabIndex = 0;
             // 
-            // textBox4
+            // textBox_UserName
             // 
-            textBox4.Location = new Point(6, 17);
-            textBox4.Name = "textBox4";
-            textBox4.PlaceholderText = "Username";
-            textBox4.Size = new Size(136, 23);
-            textBox4.TabIndex = 3;
+            textBox_UserName.Location = new Point(6, 17);
+            textBox_UserName.Name = "textBox_UserName";
+            textBox_UserName.PlaceholderText = "Username";
+            textBox_UserName.Size = new Size(136, 23);
+            textBox_UserName.TabIndex = 3;
             // 
-            // button9
+            // btn_SaveToTXT
             // 
-            button9.Location = new Point(502, 361);
-            button9.Name = "button9";
-            button9.Size = new Size(270, 38);
-            button9.TabIndex = 10;
-            button9.Text = "Save to TXT";
-            button9.UseVisualStyleBackColor = true;
+            btn_SaveToTXT.Location = new Point(502, 361);
+            btn_SaveToTXT.Name = "btn_SaveToTXT";
+            btn_SaveToTXT.Size = new Size(270, 38);
+            btn_SaveToTXT.TabIndex = 10;
+            btn_SaveToTXT.Text = "Save to TXT";
+            btn_SaveToTXT.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 411);
-            Controls.Add(button9);
+            Controls.Add(btn_SaveToTXT);
             Controls.Add(panel1);
             Controls.Add(TextBoxLogs);
             Controls.Add(menuStrip1);
@@ -637,45 +637,45 @@
         private ToolStripMenuItem analizeToolStripMenuItem;
         private Panel panel1;
         private GroupBox groupBox1;
-        private TextBox textBox1;
+        private TextBox textBox_Password;
         private GroupBox groupBox2;
-        private TextBox textBox3;
-        private Label label3;
-        private Label label2;
-        private TextBox textBox2;
-        private Button button1;
-        private TextBox textBox4;
-        private Button button2;
-        private ComboBox comboBox1;
+        private TextBox textBox_NtpServer;
+        private Label label_NtpServer;
+        private Label label_HostName;
+        private TextBox textBox_HostName;
+        private Button btn_SaveBasicInfo;
+        private TextBox textBox_UserName;
+        private Button btn_AddAccount;
+        private ComboBox comboBox_Privilege;
         private GroupBox groupBox3;
         private GroupBox groupBox5;
         private GroupBox groupBox4;
-        private Button button3;
-        private TextBox textBox5;
+        private Button btn_AddSNMP;
+        private TextBox textBox_HostSNMP;
         private Label label1;
         private GroupBox groupBox6;
-        private TextBox textBox8;
-        private TextBox textBox7;
-        private TextBox textBox6;
+        private TextBox textBox_VlanIpAddress;
+        private TextBox textBox_VlanDescription;
+        private TextBox textBox_VlanId;
         private Label label4;
         private Label label6;
         private Label label5;
-        private ComboBox comboBox2;
+        private ComboBox comboBox_ActionVlan;
         private Label label7;
-        private Button button4;
-        private Button button6;
-        private Button button5;
+        private Button btn_LoadActionVlan;
+        private Button btn_ClearVlanField;
+        private Button btn_AddVlan;
         private GroupBox groupBox7;
-        private ComboBox comboBox3;
+        private ComboBox comboBoxInterface;
         private Button button8;
-        private Button button7;
-        private TextBox textBox9;
-        private ComboBox comboBox5;
+        private Button btn_InterfaceModify;
+        private TextBox textBox_InterfaceDescription;
+        private ComboBox comboBox_InterfaceDuplex;
         private Label label9;
-        private ComboBox comboBox4;
+        private ComboBox comboBox_InterfaceSpeed;
         private Label label8;
         private Label label10;
-        private TextBox textBox10;
-        private Button button9;
+        private TextBox textBox_InterfaceInputVlan;
+        private Button btn_SaveToTXT;
     }
 }

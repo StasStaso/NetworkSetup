@@ -310,6 +310,7 @@
             button8.TabIndex = 7;
             button8.Text = "Config Port";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // groupBox4
             // 
@@ -376,7 +377,7 @@
             btn_ClearVlanField.Name = "btn_ClearVlanField";
             btn_ClearVlanField.Size = new Size(239, 23);
             btn_ClearVlanField.TabIndex = 14;
-            btn_ClearVlanField.Text = "Clear";
+            btn_ClearVlanField.Text = "Show Vlan";
             btn_ClearVlanField.UseVisualStyleBackColor = true;
             // 
             // btn_AddVlan

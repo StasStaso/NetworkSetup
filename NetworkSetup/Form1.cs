@@ -61,9 +61,17 @@ namespace NetworkSetup
                 comboBox_InterfaceDuplex.Text = "";
                 comboBox_InterfaceDuplex.Enabled = false;
             }
-            else 
+            else
             {
                 comboBox_InterfaceDuplex.Enabled = true;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            using (InputVlan inputVlan = new InputVlan())
+            {
+                inputVlan.ShowDialog();
             }
         }
     }

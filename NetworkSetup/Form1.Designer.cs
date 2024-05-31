@@ -144,12 +144,14 @@
             dCNS420028ToolStripMenuItem.Name = "dCNS420028ToolStripMenuItem";
             dCNS420028ToolStripMenuItem.Size = new Size(156, 22);
             dCNS420028ToolStripMenuItem.Text = "DCN-S4200-28";
+            dCNS420028ToolStripMenuItem.Click += dCNS420028ToolStripMenuItem_Click;
             // 
             // dCNS420052ToolStripMenuItem
             // 
             dCNS420052ToolStripMenuItem.Name = "dCNS420052ToolStripMenuItem";
             dCNS420052ToolStripMenuItem.Size = new Size(156, 22);
             dCNS420052ToolStripMenuItem.Text = "DCN-S4200-52";
+            dCNS420052ToolStripMenuItem.Click += dCNS420052ToolStripMenuItem_Click;
             // 
             // dLinkDES3528ToolStripMenuItem
             // 
@@ -255,7 +257,7 @@
             // comboBox_InterfaceDuplex
             // 
             comboBox_InterfaceDuplex.FormattingEnabled = true;
-            comboBox_InterfaceDuplex.Items.AddRange(new object[] { "auto", "full", "half", "fx" });
+            comboBox_InterfaceDuplex.Items.AddRange(new object[] { "full", "half", "fx" });
             comboBox_InterfaceDuplex.Location = new Point(54, 46);
             comboBox_InterfaceDuplex.Name = "comboBox_InterfaceDuplex";
             comboBox_InterfaceDuplex.Size = new Size(136, 23);
@@ -274,11 +276,12 @@
             // comboBox_InterfaceSpeed
             // 
             comboBox_InterfaceSpeed.FormattingEnabled = true;
-            comboBox_InterfaceSpeed.Items.AddRange(new object[] { "10", "100", "1G" });
+            comboBox_InterfaceSpeed.Items.AddRange(new object[] { "auto", "10", "100", "1G" });
             comboBox_InterfaceSpeed.Location = new Point(54, 17);
             comboBox_InterfaceSpeed.Name = "comboBox_InterfaceSpeed";
             comboBox_InterfaceSpeed.Size = new Size(136, 23);
             comboBox_InterfaceSpeed.TabIndex = 10;
+            comboBox_InterfaceSpeed.SelectedIndexChanged += comboBox_InterfaceSpeed_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -293,7 +296,6 @@
             // comboBoxInterface
             // 
             comboBoxInterface.FormattingEnabled = true;
-            comboBoxInterface.Items.AddRange(new object[] { "Ethernet 1/0/1", "Ethernet 1/0/2", "Ethernet 1/0/3", "Ethernet 1/0/4", "Ethernet 1/0/5", "Ethernet 1/0/6", "Ethernet 1/0/7" });
             comboBoxInterface.Location = new Point(6, 22);
             comboBoxInterface.Name = "comboBoxInterface";
             comboBoxInterface.Size = new Size(196, 23);

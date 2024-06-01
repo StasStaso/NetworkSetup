@@ -72,7 +72,7 @@ namespace NetworkSetup
             {
                 Label labelVlan = new Label
                 {
-                    Text = $"VLAN {_dcnConfig.Vlans[i].}",
+                    Text = $"VLAN {_dcnConfig.Vlans[i].Id}",
                     Location = new System.Drawing.Point(20, 80 + i * 30),
                     AutoSize = true
                 };
@@ -103,12 +103,11 @@ namespace NetworkSetup
                 this.Controls.Add(checkBoxSnooping);
             }
 
-            // Додавання кнопки "Save"
             Button buttonSave = new Button
             {
                 Text = "Save",
                 Location = new System.Drawing.Point(100, 80 + vlanCount * 30 + 10),
-                Width = 220, // Від початку першого TextBox до кінця другого
+                Width = 220, 
                 Height = 30
             };
 

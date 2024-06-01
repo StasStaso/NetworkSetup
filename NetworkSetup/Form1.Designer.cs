@@ -568,6 +568,7 @@
             btn_AddAccount.TabIndex = 5;
             btn_AddAccount.Text = "Add";
             btn_AddAccount.UseVisualStyleBackColor = true;
+            btn_AddAccount.Click += btn_AddAccount_Click;
             // 
             // textBox_Password
             // 

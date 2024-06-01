@@ -5,7 +5,7 @@ namespace NetworkSetup
 {
     public partial class Form1 : Form
     {
-        private readonly SwitchConfigurationDcn _dcnConfig;        
+        private readonly SwitchConfigurationDcn _dcnConfig;
 
         private bool IsVlanAdd = true;
         private bool IsDCNSwitch = false;
@@ -88,7 +88,18 @@ namespace NetworkSetup
         {
             if (string.IsNullOrEmpty(textBox_VlanId.Text))
             {
+                IsVlanAdd = false;
                 MessageBox.Show("Vlan Id: empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            if (string.IsNullOrEmpty(textBox_VlanDescription.Text))
+            {
+                IsVlanAdd = false;
+                MessageBox.Show("Description: empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                IsVlanAdd = true;
             }
 
             bool vlanExists = _dcnConfig.Vlans
@@ -102,8 +113,8 @@ namespace NetworkSetup
                     Description = textBox_VlanDescription.Text,
                     IpAddress = textBox_VlanIpAddress.Text
                 });
-            } 
-            
+            }
+
             if (IsVlanAdd == false && vlanExists)
             {
                 var removeVlan = _dcnConfig.Vlans.FirstOrDefault(x => x.Id == (textBox_VlanId.Text));
@@ -150,6 +161,41 @@ namespace NetworkSetup
             if (IsDCNSwitch)
             {
 
+            }
+        }
+
+        private void btn_AddAccount_Click(object sender, EventArgs e)
+        {
+            if (IsDCNSwitch)
+            {
+                if (string.IsNullOrEmpty(textBox_UserName.Text)
+                    || string.IsNullOrEmpty(textBox_Password.Text))
+                {
+                    MessageBox.Show("Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (comboBox_Privilege.SelectedIndex == -1) 
+                {
+                    MessageBox.Show("Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                bool accountExists = _dcnConfig.Accounts
+                 .Any(v => v.UserName == textBox_UserName.Text);
+
+                if (!accountExists)
+                {
+                    _dcnConfig.Accounts.Add(new Account
+                    {
+                        UserName = textBox_UserName.Text,
+                        Password = textBox_Password.Text,
+                        Privilege = comboBox_Privilege.SelectedIndex + 1
+                    });
+                }
+                else 
+                {
+                    MessageBox.Show("An account with this name already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

@@ -67,7 +67,7 @@ namespace NetworkSetup
             {
                 Label labelVlan = new Label
                 {
-                    Text = $"VLAN {i + 1}",
+                    Text = $"Vlan {_vlanService.VlanList[i].Id}",
                     Location = new System.Drawing.Point(20, 80 + i * 30),
                     AutoSize = true
                 };

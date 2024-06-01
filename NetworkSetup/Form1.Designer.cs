@@ -333,6 +333,7 @@
             btn_LoadActionVlan.TabIndex = 7;
             btn_LoadActionVlan.Text = "Load";
             btn_LoadActionVlan.UseVisualStyleBackColor = true;
+            btn_LoadActionVlan.Click += btn_LoadActionVlan_Click;
             // 
             // comboBox_ActionVlan
             // 

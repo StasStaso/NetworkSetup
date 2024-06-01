@@ -7,6 +7,8 @@ namespace NetworkSetup
         private readonly VlanService _vlanService;
         private readonly InputVlan _inputVlan;
 
+        private bool IsVlanAdd = true;
+
         public Form1(VlanService vlanService)
         {
             _vlanService = vlanService;
@@ -83,9 +85,26 @@ namespace NetworkSetup
 
         private void btn_AddVlan_Click(object sender, EventArgs e)
         {
-            _vlanService.Add(textBox_VlanId.Text,
-                textBox_VlanDescription.Text,
-                textBox_VlanIpAddress.Text);
+            if (string.IsNullOrEmpty(textBox_VlanId.Text))
+            {
+                MessageBox.Show("Vlan Id: empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            bool vlanExists = _vlanService.VlanList                
+                .Any(v => v.Id == textBox_VlanId.Text);
+
+            if (!vlanExists && IsVlanAdd)
+            {
+                _vlanService.Add(textBox_VlanId.Text,
+                                 textBox_VlanDescription.Text,
+                                 textBox_VlanIpAddress.Text);
+            }
+            else if (IsVlanAdd == false && vlanExists)
+            {
+                var removeVlan = _vlanService.VlanList.FirstOrDefault(x => x.Id == (textBox_VlanId.Text));
+
+                _vlanService.VlanList.Remove(removeVlan);
+            }
         }
 
         private void btn_ClearVlanField_Click(object sender, EventArgs e)
@@ -98,6 +117,27 @@ namespace NetworkSetup
             }
 
             MessageBox.Show($"Vlan : {vlans}");
+        }
+
+        private void btn_LoadActionVlan_Click(object sender, EventArgs e)
+        {
+            if (comboBox_ActionVlan.SelectedIndex == 0) 
+            {
+                IsVlanAdd = true;
+                groupBox6.Text = "Add Vlan";
+                textBox_VlanDescription.Enabled = true;
+                textBox_VlanIpAddress.Enabled = true;
+                btn_AddVlan.Text = "Add";
+            }
+
+            if (comboBox_ActionVlan.SelectedIndex == 1) 
+            {
+                IsVlanAdd = false;
+                groupBox6.Text = "Remove Vlan";
+                textBox_VlanDescription.Enabled = false;
+                textBox_VlanIpAddress.Enabled = false;
+                btn_AddVlan.Text = "Remove";
+            }
         }
     }
 }

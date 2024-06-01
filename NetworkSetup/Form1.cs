@@ -1,25 +1,24 @@
+using NetworkSetup.Model;
 using NetworkSetup.Service;
 
 namespace NetworkSetup
 {
     public partial class Form1 : Form
     {
-        private readonly VlanService _vlanService;
-        private readonly InputVlan _inputVlan;
+        private readonly SwitchConfigurationDcn _dcnConfig;        
 
         private bool IsVlanAdd = true;
+        private bool IsDCNSwitch = false;
 
-        public Form1(VlanService vlanService)
+        public Form1(SwitchConfigurationDcn dcnConfig)
         {
-            _vlanService = vlanService;
+            _dcnConfig = dcnConfig;
 
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
 
-            // Встановлення властивостей форми
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; // Фіксована рамка
-            this.MaximizeBox = false; // Вимкнення кнопки максимізації
 
-            // Встановлення мінімального та максимального розміру, щоб зробити розмір фіксованим
             this.MinimumSize = new Size(this.Width, this.Height);
             this.MaximumSize = new Size(this.Width, this.Height);
 
@@ -36,11 +35,13 @@ namespace NetworkSetup
         private void dCNS420028ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateComboBox(comboBoxInterface, 28);
+            IsDCNSwitch = true;
         }
 
         private void dCNS420052ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateComboBox(comboBoxInterface, 52);
+            IsDCNSwitch = true;
         }
 
         private void UpdateComboBox(ComboBox comboBox, int port)
@@ -78,7 +79,7 @@ namespace NetworkSetup
 
         private void button8_Click(object sender, EventArgs e)
         {
-            InputVlan inputVlan = new InputVlan(_vlanService);
+            InputVlan inputVlan = new InputVlan(_dcnConfig);
 
             inputVlan.Show();
         }
@@ -90,20 +91,24 @@ namespace NetworkSetup
                 MessageBox.Show("Vlan Id: empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            bool vlanExists = _vlanService.VlanList                
+            bool vlanExists = _dcnConfig.Vlans
                 .Any(v => v.Id == textBox_VlanId.Text);
 
             if (!vlanExists && IsVlanAdd)
             {
-                _vlanService.Add(textBox_VlanId.Text,
-                                 textBox_VlanDescription.Text,
-                                 textBox_VlanIpAddress.Text);
-            }
-            else if (IsVlanAdd == false && vlanExists)
+                _dcnConfig.Vlans.Add(new Vlan
+                {
+                    Id = textBox_VlanId.Text,
+                    Description = textBox_VlanDescription.Text,
+                    IpAddress = textBox_VlanIpAddress.Text
+                });
+            } 
+            
+            if (IsVlanAdd == false && vlanExists)
             {
-                var removeVlan = _vlanService.VlanList.FirstOrDefault(x => x.Id == (textBox_VlanId.Text));
+                var removeVlan = _dcnConfig.Vlans.FirstOrDefault(x => x.Id == (textBox_VlanId.Text));
 
-                _vlanService.VlanList.Remove(removeVlan);
+                _dcnConfig.Vlans.Remove(removeVlan);
             }
         }
 
@@ -111,7 +116,7 @@ namespace NetworkSetup
         {
             string vlans = "";
 
-            foreach (var item in _vlanService.VlanList)
+            foreach (var item in _dcnConfig.Vlans)
             {
                 vlans += item.Id + ";";
             }
@@ -121,7 +126,7 @@ namespace NetworkSetup
 
         private void btn_LoadActionVlan_Click(object sender, EventArgs e)
         {
-            if (comboBox_ActionVlan.SelectedIndex == 0) 
+            if (comboBox_ActionVlan.SelectedIndex == 0)
             {
                 IsVlanAdd = true;
                 groupBox6.Text = "Add Vlan";
@@ -130,13 +135,21 @@ namespace NetworkSetup
                 btn_AddVlan.Text = "Add";
             }
 
-            if (comboBox_ActionVlan.SelectedIndex == 1) 
+            if (comboBox_ActionVlan.SelectedIndex == 1)
             {
                 IsVlanAdd = false;
                 groupBox6.Text = "Remove Vlan";
                 textBox_VlanDescription.Enabled = false;
                 textBox_VlanIpAddress.Enabled = false;
                 btn_AddVlan.Text = "Remove";
+            }
+        }
+
+        private void btn_SaveToTXT_Click(object sender, EventArgs e)
+        {
+            if (IsDCNSwitch)
+            {
+
             }
         }
     }

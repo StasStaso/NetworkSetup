@@ -22,7 +22,7 @@ namespace NetworkSetup
         {
             services.AddTransient<Form1>();
             services.AddTransient<InputVlan>();
-            services.AddSingleton<VlanService>(); // Зареєструємо VlanService як Singleton
+            services.AddSingleton<SwitchConfigurationDcn>(); // Зареєструємо VlanService як Singleton
         }
     }
 }

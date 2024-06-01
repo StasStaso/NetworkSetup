@@ -343,7 +343,6 @@
             comboBox_ActionVlan.Name = "comboBox_ActionVlan";
             comboBox_ActionVlan.Size = new Size(119, 23);
             comboBox_ActionVlan.TabIndex = 8;
-            comboBox_ActionVlan.Text = "Add";
             // 
             // label7
             // 
@@ -370,7 +369,7 @@
             groupBox6.Size = new Size(251, 152);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
-            groupBox6.Text = "New Vlan";
+            groupBox6.Text = "Vlan";
             // 
             // btn_ClearVlanField
             // 
@@ -594,6 +593,7 @@
             btn_SaveToTXT.TabIndex = 10;
             btn_SaveToTXT.Text = "Save to TXT";
             btn_SaveToTXT.UseVisualStyleBackColor = true;
+            btn_SaveToTXT.Click += btn_SaveToTXT_Click;
             // 
             // Form1
             // 

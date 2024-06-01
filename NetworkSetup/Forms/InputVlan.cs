@@ -13,11 +13,11 @@ namespace NetworkSetup
 {
     public partial class InputVlan : Form
     {
-        private readonly VlanService _vlanService;
+        private readonly SwitchConfigurationDcn _dcnConfig;
 
-        public InputVlan(VlanService vlanService)
+        public InputVlan(SwitchConfigurationDcn dcnConfig)
         {
-            _vlanService = vlanService;
+            _dcnConfig = dcnConfig;
 
             InitializeComponent();
 
@@ -31,7 +31,6 @@ namespace NetworkSetup
             };
             this.Controls.Add(labelAllVlans);
 
-            // Додання заголовків для стовпців
             Label labelTrunkHeader = new Label
             {
                 Text = "Trunk",
@@ -45,17 +44,23 @@ namespace NetworkSetup
                 AutoSize = true
             };
 
+            Label labelSnoopingHeader = new Label
+            {
+                Text = "Ip Snooping",
+                Location = new System.Drawing.Point(340, 50),
+                AutoSize = true
+            };
+
             this.Controls.Add(labelTrunkHeader);
             this.Controls.Add(labelAllowedHeader);
+            this.Controls.Add(labelSnoopingHeader);
 
-
-
-            int numberOfVlans = _vlanService.VlanList.Count; // Змінити на потрібну кількість VLAN-ів
+            int numberOfVlans = _dcnConfig.Vlans.Count;
             GenerateVlanControls(numberOfVlans);
 
             // Встановлення висоти форми залежно від кількості VLAN-ів
             this.Height = 170 + numberOfVlans * 30;
-            this.Width = 350;
+            this.Width = 460; // Збільшуємо ширину для CheckBox
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -67,7 +72,7 @@ namespace NetworkSetup
             {
                 Label labelVlan = new Label
                 {
-                    Text = $"Vlan {_vlanService.VlanList[i].Id}",
+                    Text = $"VLAN {_dcnConfig.Vlans[i].}",
                     Location = new System.Drawing.Point(20, 80 + i * 30),
                     AutoSize = true
                 };
@@ -86,20 +91,28 @@ namespace NetworkSetup
                     Name = $"textBoxAllowed{i + 1}"
                 };
 
-                // Додавання кнопки "Save"
-                Button buttonSave = new Button
+                CheckBox checkBoxSnooping = new CheckBox
                 {
-                    Text = "Save",
-                    Location = new System.Drawing.Point(100, 80 + vlanCount * 30 + 10),
-                    Width = 220, // Від початку першого TextBox до кінця другого
-                    Height = 30
+                    Location = new System.Drawing.Point(340, 80 + i * 30),
+                    Name = $"checkBoxSnooping{i + 1}"
                 };
 
-                this.Controls.Add(buttonSave);
                 this.Controls.Add(labelVlan);
                 this.Controls.Add(textBoxTrunk);
                 this.Controls.Add(textBoxAllowed);
+                this.Controls.Add(checkBoxSnooping);
             }
+
+            // Додавання кнопки "Save"
+            Button buttonSave = new Button
+            {
+                Text = "Save",
+                Location = new System.Drawing.Point(100, 80 + vlanCount * 30 + 10),
+                Width = 220, // Від початку першого TextBox до кінця другого
+                Height = 30
+            };
+
+            this.Controls.Add(buttonSave);
         }
 
         private void InputVlan_Load(object sender, EventArgs e)

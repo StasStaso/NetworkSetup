@@ -46,10 +46,19 @@ namespace NetworkSetup.Service
             command.Add(com);
         }
 
+        public List<string> GetCommand() 
+        {
+            CommandForStart();
+            return command;
+        }
+
         private void CommandForStart()
         {
             command.Add($"enable");
             command.Add($"config");
+            
+            command.Add($"hostname {_hostName}");
+
             Accounts.ForEach(account => command.Add($"username {account.UserName} privilege {account.Privilege} password 0 {account.Password}"));
 
             command.Add($"snmp-server enable");
@@ -74,7 +83,11 @@ namespace NetworkSetup.Service
 
             AddVlan();
 
+            command.Add($"ntp enable");
+            command.Add($"ntp server {_ntpServer}");
 
+            command.Add($"exit");
+            command.Add($"exit");
         }
 
         public void AddPortCommands(List<string> portCommands)
@@ -119,7 +132,7 @@ namespace NetworkSetup.Service
         {
             command.Add($"interface Vlan{id}");
             command.Add($"ip address {ip} 255.255.255.0");
-            command.Add($"!");
+            command.Add($"exit");
         }
     }
 }

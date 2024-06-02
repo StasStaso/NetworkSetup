@@ -177,7 +177,29 @@ namespace NetworkSetup
         {
             if (IsDCNSwitch)
             {
+                string path = $"..\\..\\..\\{_dcnConfig.HostName}.txt";
 
+                CreateAndWriteToFile(path, _dcnConfig.GetCommand());
+            }
+        }
+
+        static void CreateAndWriteToFile(string path, List<string> lines)
+        {
+            try
+            {
+                if (!File.Exists(path))
+                {
+                    using (FileStream fs = File.Create(path))
+                    {
+                        fs.Close();
+                    }
+                }
+
+                File.WriteAllLines(path, lines);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Помилка при записі до файлу: {ex.Message}");
             }
         }
 

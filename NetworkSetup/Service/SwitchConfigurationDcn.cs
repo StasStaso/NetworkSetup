@@ -77,6 +77,11 @@ namespace NetworkSetup.Service
 
         }
 
+        public void AddPortCommands(List<string> portCommands)
+        {
+            command.AddRange(portCommands);
+        }
+
         private string GetSnmpHosts()
         {
             var sb = new StringBuilder();

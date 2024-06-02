@@ -85,7 +85,7 @@ namespace NetworkSetup
                     Width = 100,
                     Name = $"textBoxTrunk{i + 1}"
                 };
-                textBoxTrunk.TextChanged += (sender, e) => UpdateAllowedPorts(sender, e, vlanCount);
+                textBoxTrunk.TextChanged += (sender, e) => UpdateAllowedPorts();
 
                 TextBox textBoxAllowed = new TextBox
                 {
@@ -93,6 +93,7 @@ namespace NetworkSetup
                     Width = 100,
                     Name = $"textBoxAllowed{i + 1}"
                 };
+                textBoxAllowed.TextChanged += (sender, e) => UpdateAllowedPorts();
 
                 CheckBox checkBoxSnooping = new CheckBox
                 {
@@ -122,11 +123,13 @@ namespace NetworkSetup
 
         }
 
-        private void UpdateAllowedPorts(object sender, EventArgs e, int vlanCount)
+        private void UpdateAllowedPorts()
         {
-            // Collect all Trunk ports
             HashSet<int> trunkPorts = new HashSet<int>();
-            for (int i = 1; i <= vlanCount; i++)
+            HashSet<int> allAllowedPorts = new HashSet<int>();
+
+            // Collect all trunk ports from all trunk text boxes
+            for (int i = 1; i <= _dcnConfig.Vlans.Count; i++)
             {
                 TextBox trunkTextBox = (TextBox)this.Controls.Find($"textBoxTrunk{i}", true)[0];
                 string trunkValue = trunkTextBox.Text;
@@ -153,19 +156,49 @@ namespace NetworkSetup
                 }
             }
 
-            // Update all Allowed ports
-            for (int i = 1; i <= vlanCount; i++)
+            // Collect all allowed ports from all allowed text boxes
+            for (int i = 1; i <= _dcnConfig.Vlans.Count; i++)
             {
                 TextBox allowedTextBox = (TextBox)this.Controls.Find($"textBoxAllowed{i}", true)[0];
-                List<int> allPorts = Enumerable.Range(1, _portCount).ToList();
-                allPorts.RemoveAll(p => trunkPorts.Contains(p));
+                string allowedValue = allowedTextBox.Text;
+                if (!string.IsNullOrWhiteSpace(allowedValue))
+                {
+                    foreach (var portRange in allowedValue.Split(';'))
+                    {
+                        if (portRange.Contains('-'))
+                        {
+                            var rangeParts = portRange.Split('-');
+                            if (int.TryParse(rangeParts[0], out int start) && int.TryParse(rangeParts[1], out int end))
+                            {
+                                for (int p = start; p <= end; p++)
+                                {
+                                    allAllowedPorts.Add(p);
+                                }
+                            }
+                        }
+                        else if (int.TryParse(portRange, out int port))
+                        {
+                            allAllowedPorts.Add(port);
+                        }
+                    }
+                }
+            }
 
-                // Build allowed ports string
+            // Remove trunk ports from all allowed ports
+            allAllowedPorts.ExceptWith(trunkPorts);
+
+            // Update all allowed text boxes based on the collected trunk and allowed ports
+            for (int i = 1; i <= _dcnConfig.Vlans.Count; i++)
+            {
+                TextBox allowedTextBox = (TextBox)this.Controls.Find($"textBoxAllowed{i}", true)[0];
+                List<int> remainingPorts = Enumerable.Range(1, _portCount).ToList();
+                remainingPorts.RemoveAll(p => trunkPorts.Contains(p) || allAllowedPorts.Contains(p));
+
                 StringBuilder allowedPortsText = new StringBuilder();
                 int startRange = 0;
                 int endRange = 0;
 
-                foreach (int port in allPorts)
+                foreach (int port in remainingPorts)
                 {
                     if (startRange == 0)
                     {

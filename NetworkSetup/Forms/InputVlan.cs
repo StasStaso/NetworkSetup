@@ -114,6 +114,7 @@ namespace NetworkSetup
                 Width = 220,
                 Height = 30
             };
+            buttonSave.Click += ButtonSave_Click;
 
             this.Controls.Add(buttonSave);
         }
@@ -121,6 +122,95 @@ namespace NetworkSetup
         private void InputVlan_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            List<string> portCommands = new List<string>();
+
+            for (int i = 1; i <= _dcnConfig.Vlans.Count; i++)
+            {
+                TextBox trunkTextBox = (TextBox)this.Controls.Find($"textBoxTrunk{i}", true)[0];
+                TextBox allowedTextBox = (TextBox)this.Controls.Find($"textBoxAllowed{i}", true)[0];
+                CheckBox snoopingCheckBox = (CheckBox)this.Controls.Find($"checkBoxSnooping{i}", true)[0];
+
+                string trunkPorts = trunkTextBox.Text;
+                string allowedPorts = allowedTextBox.Text;
+                bool snooping = snoopingCheckBox.Checked;
+
+                // Handle trunk ports
+                if (!string.IsNullOrWhiteSpace(trunkPorts))
+                {
+                    foreach (var portRange in trunkPorts.Split(';'))
+                    {
+                        if (portRange.Contains('-'))
+                        {
+                            var rangeParts = portRange.Split('-');
+                            if (int.TryParse(rangeParts[0], out int start) && int.TryParse(rangeParts[1], out int end))
+                            {
+                                for (int port = start; port <= end; port++)
+                                {
+                                    portCommands.Add($"Interface Ethernet1/0/{port}");
+                                    portCommands.Add(" switchport mode trunk");
+                                    portCommands.Add($" switchport trunk allowed vlan {i}");
+                                    if (snooping)
+                                    {
+                                        portCommands.Add(" ip dhcp snooping trust");
+                                    }
+                                    portCommands.Add("!");
+                                }
+                            }
+                        }
+                        else if (int.TryParse(portRange, out int port))
+                        {
+                            portCommands.Add($"Interface Ethernet1/0/{port}");
+                            portCommands.Add(" switchport mode trunk");
+                            portCommands.Add($" switchport trunk allowed vlan {i}");
+                            if (snooping)
+                            {
+                                portCommands.Add(" ip dhcp snooping trust");
+                            }
+                            portCommands.Add("!");
+                        }
+                    }
+                }
+
+                // Handle allowed ports
+                if (!string.IsNullOrWhiteSpace(allowedPorts))
+                {
+                    foreach (var portRange in allowedPorts.Split(';'))
+                    {
+                        if (portRange.Contains('-'))
+                        {
+                            var rangeParts = portRange.Split('-');
+                            if (int.TryParse(rangeParts[0], out int start) && int.TryParse(rangeParts[1], out int end))
+                            {
+                                for (int port = start; port <= end; port++)
+                                {
+                                    portCommands.Add($"Interface Ethernet1/0/{port}");
+                                    portCommands.Add($" switchport access vlan {i}");
+                                    portCommands.Add($" loopback-detection specified-vlan {i}");
+                                    portCommands.Add(" loopback-detection control shutdown");
+                                    portCommands.Add(" ip dhcp snooping action shutdown recovery 600");
+                                    portCommands.Add("!");
+                                }
+                            }
+                        }
+                        else if (int.TryParse(portRange, out int port))
+                        {
+                            portCommands.Add($"Interface Ethernet1/0/{port}");
+                            portCommands.Add($" switchport access vlan {i}");
+                            portCommands.Add($" loopback-detection specified-vlan {i}");
+                            portCommands.Add(" loopback-detection control shutdown");
+                            portCommands.Add(" ip dhcp snooping action shutdown recovery 600");
+                            portCommands.Add("!");
+                        }
+                    }
+                }
+            }
+
+            // Add the generated commands to the SwitchConfigurationDcn instance
+            _dcnConfig.AddPortCommands(portCommands);
         }
 
         private void UpdateAllowedPorts()

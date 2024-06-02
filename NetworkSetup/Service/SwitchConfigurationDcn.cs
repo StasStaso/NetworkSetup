@@ -48,7 +48,6 @@ namespace NetworkSetup.Service
 
         public List<string> GetCommand() 
         {
-            CommandForStart();
             return command;
         }
 
@@ -83,6 +82,10 @@ namespace NetworkSetup.Service
 
             AddVlan();
 
+        }
+
+        private void CommandForEnd()
+        {
             command.Add($"ntp enable");
             command.Add($"ntp server {_ntpServer}");
 
@@ -92,7 +95,9 @@ namespace NetworkSetup.Service
 
         public void AddPortCommands(List<string> portCommands)
         {
+            CommandForStart();
             command.AddRange(portCommands);
+            CommandForEnd();
         }
 
         private string GetSnmpHosts()

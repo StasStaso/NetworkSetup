@@ -58,6 +58,13 @@ namespace NetworkSetup
             IsDCNSwitch = true;
         }
 
+        private void dCNS460028PToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PortCount = 28;
+            UpdateComboBox(comboBoxInterface, PortCount);
+            IsDCNSwitch = true;
+        }
+
         private void UpdateComboBox(ComboBox comboBox, int port)
         {
             comboBox.Items.Clear();
@@ -271,9 +278,9 @@ namespace NetworkSetup
 
         private void btn_AddSNMP_Click(object sender, EventArgs e)
         {
-            if (IsDCNSwitch) 
+            if (IsDCNSwitch)
             {
-                if (string.IsNullOrEmpty(textBox_HostSNMP.Text))           
+                if (string.IsNullOrEmpty(textBox_HostSNMP.Text))
                 {
                     MessageBox.Show("Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

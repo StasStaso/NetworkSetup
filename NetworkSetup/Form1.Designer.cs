@@ -36,7 +36,7 @@
             switchToolStripMenuItem = new ToolStripMenuItem();
             dCNS420028ToolStripMenuItem = new ToolStripMenuItem();
             dCNS420052ToolStripMenuItem = new ToolStripMenuItem();
-            dLinkDES3528ToolStripMenuItem = new ToolStripMenuItem();
+            dCNS460028PToolStripMenuItem = new ToolStripMenuItem();
             onuToolStripMenuItem = new ToolStripMenuItem();
             zTEF601ToolStripMenuItem = new ToolStripMenuItem();
             analizeToolStripMenuItem = new ToolStripMenuItem();
@@ -134,7 +134,7 @@
             // 
             // switchToolStripMenuItem
             // 
-            switchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dCNS420028ToolStripMenuItem, dCNS420052ToolStripMenuItem, dLinkDES3528ToolStripMenuItem });
+            switchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dCNS420028ToolStripMenuItem, dCNS420052ToolStripMenuItem, dCNS460028PToolStripMenuItem });
             switchToolStripMenuItem.Name = "switchToolStripMenuItem";
             switchToolStripMenuItem.Size = new Size(54, 20);
             switchToolStripMenuItem.Text = "Switch";
@@ -142,22 +142,23 @@
             // dCNS420028ToolStripMenuItem
             // 
             dCNS420028ToolStripMenuItem.Name = "dCNS420028ToolStripMenuItem";
-            dCNS420028ToolStripMenuItem.Size = new Size(156, 22);
-            dCNS420028ToolStripMenuItem.Text = "DCN-S4200-28";
+            dCNS420028ToolStripMenuItem.Size = new Size(180, 22);
+            dCNS420028ToolStripMenuItem.Text = "DCN-S4200-28P";
             dCNS420028ToolStripMenuItem.Click += dCNS420028ToolStripMenuItem_Click;
             // 
             // dCNS420052ToolStripMenuItem
             // 
             dCNS420052ToolStripMenuItem.Name = "dCNS420052ToolStripMenuItem";
-            dCNS420052ToolStripMenuItem.Size = new Size(156, 22);
-            dCNS420052ToolStripMenuItem.Text = "DCN-S4200-52";
+            dCNS420052ToolStripMenuItem.Size = new Size(180, 22);
+            dCNS420052ToolStripMenuItem.Text = "DCN-S4600-52P";
             dCNS420052ToolStripMenuItem.Click += dCNS420052ToolStripMenuItem_Click;
             // 
-            // dLinkDES3528ToolStripMenuItem
+            // dCNS460028PToolStripMenuItem
             // 
-            dLinkDES3528ToolStripMenuItem.Name = "dLinkDES3528ToolStripMenuItem";
-            dLinkDES3528ToolStripMenuItem.Size = new Size(156, 22);
-            dLinkDES3528ToolStripMenuItem.Text = "D-Link DES3528";
+            dCNS460028PToolStripMenuItem.Name = "dCNS460028PToolStripMenuItem";
+            dCNS460028PToolStripMenuItem.Size = new Size(180, 22);
+            dCNS460028PToolStripMenuItem.Text = "DCN-S4600-28P";
+            dCNS460028PToolStripMenuItem.Click += dCNS460028PToolStripMenuItem_Click;
             // 
             // onuToolStripMenuItem
             // 
@@ -640,7 +641,7 @@
         private ToolStripMenuItem switchToolStripMenuItem;
         private ToolStripMenuItem dCNS420028ToolStripMenuItem;
         private ToolStripMenuItem dCNS420052ToolStripMenuItem;
-        private ToolStripMenuItem dLinkDES3528ToolStripMenuItem;
+        private ToolStripMenuItem dCNS460028PToolStripMenuItem;
         private ToolStripMenuItem onuToolStripMenuItem;
         private ToolStripMenuItem zTEF601ToolStripMenuItem;
         private ToolStripMenuItem analizeToolStripMenuItem;

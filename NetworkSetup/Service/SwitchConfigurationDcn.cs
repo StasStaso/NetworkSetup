@@ -74,7 +74,7 @@ namespace NetworkSetup.Service
             command.Add($"ip dhcp relay information option subscriber-id format hex");
 
             command.Add($"ip dhcp snooping enable");
-            command.Add($"ip dhcp snooping vlan {GetSnoopingVlan}");
+            command.Add($"ip dhcp snooping vlan {GetSnoopingVlan()}");
             command.Add($"ip dhcp snooping binding enable");
 
             command.Add($"loopback-detection interval-time 35 15");
@@ -114,8 +114,8 @@ namespace NetworkSetup.Service
 
         private string GetSnoopingVlan()
         {
-            var snoopingVlans = Vlans.Where(item => item.IsSnooping).Select(item => item.Id);
-            return string.Join(";", snoopingVlans);
+            string snoop = string.Join(";", Vlans.Select(x => x.Id));
+            return snoop;
         }
 
         private void AddVlan()

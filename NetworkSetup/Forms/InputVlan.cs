@@ -60,9 +60,9 @@ namespace NetworkSetup
             int numberOfVlans = _dcnConfig.Vlans.Count;
             GenerateVlanControls(numberOfVlans);
 
-            // Встановлення висоти форми залежно від кількості VLAN-ів
+            // Adjust the height of the form depending on the number of VLANs
             this.Height = 170 + numberOfVlans * 30;
-            this.Width = 460; // Збільшуємо ширину для CheckBox
+            this.Width = 460; // Increase width for CheckBox
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -110,7 +110,7 @@ namespace NetworkSetup
             {
                 Text = "Save",
                 Location = new System.Drawing.Point(100, 80 + vlanCount * 30 + 10),
-                Width = 220, 
+                Width = 220,
                 Height = 30
             };
 
@@ -124,42 +124,43 @@ namespace NetworkSetup
 
         private void UpdateAllowedPorts(object sender, EventArgs e, int vlanCount)
         {
-            // Отримуємо посилання на TextBox, який спричинив подію
-            TextBox trunkTextBox = (TextBox)sender;
-
-            // Отримуємо індекс TextBoxTrunk у назві, використовуючи рядкові операції
-            int index = int.Parse(trunkTextBox.Name.Replace("textBoxTrunk", "")) - 1;
-
-            // Отримуємо введене значення
-            string trunkValue = trunkTextBox.Text;
-
-            // Отримуємо відповідний TextBoxAllowed
-            TextBox allowedTextBox = (TextBox)this.Controls.Find($"textBoxAllowed{index + 1}", true)[0];
-
-            // Оновлюємо текст в TextBoxAllowed
-            if (string.IsNullOrWhiteSpace(trunkValue))
+            // Collect all Trunk ports
+            HashSet<int> trunkPorts = new HashSet<int>();
+            for (int i = 1; i <= vlanCount; i++)
             {
-                // Якщо trunkTextBox порожній, показуємо всі порти
-                allowedTextBox.Text = "1-" + _portCount;
-            }
-            else
-            {
-                // Розділяємо введений рядок на числа і видаляємо порожні елементи
-                string[] ports = trunkValue.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                // Створюємо список усіх портів від 1 до _portCount
-                List<int> allPorts = Enumerable.Range(1, _portCount).ToList();
-
-                // Видаляємо порти, які були введені в trunkTextBox
-                foreach (string port in ports)
+                TextBox trunkTextBox = (TextBox)this.Controls.Find($"textBoxTrunk{i}", true)[0];
+                string trunkValue = trunkTextBox.Text;
+                if (!string.IsNullOrWhiteSpace(trunkValue))
                 {
-                    if (int.TryParse(port, out int parsedPort))
+                    foreach (var portRange in trunkValue.Split(';'))
                     {
-                        allPorts.Remove(parsedPort);
+                        if (portRange.Contains('-'))
+                        {
+                            var rangeParts = portRange.Split('-');
+                            if (int.TryParse(rangeParts[0], out int start) && int.TryParse(rangeParts[1], out int end))
+                            {
+                                for (int p = start; p <= end; p++)
+                                {
+                                    trunkPorts.Add(p);
+                                }
+                            }
+                        }
+                        else if (int.TryParse(portRange, out int port))
+                        {
+                            trunkPorts.Add(port);
+                        }
                     }
                 }
+            }
 
-                // Формуємо рядок для textBoxAllowed
+            // Update all Allowed ports
+            for (int i = 1; i <= vlanCount; i++)
+            {
+                TextBox allowedTextBox = (TextBox)this.Controls.Find($"textBoxAllowed{i}", true)[0];
+                List<int> allPorts = Enumerable.Range(1, _portCount).ToList();
+                allPorts.RemoveAll(p => trunkPorts.Contains(p));
+
+                // Build allowed ports string
                 StringBuilder allowedPortsText = new StringBuilder();
                 int startRange = 0;
                 int endRange = 0;
@@ -179,11 +180,11 @@ namespace NetworkSetup
                     {
                         if (startRange == endRange)
                         {
-                            allowedPortsText.Append($"{startRange}, ");
+                            allowedPortsText.Append($"{startRange};");
                         }
                         else
                         {
-                            allowedPortsText.Append($"{startRange}-{endRange}, ");
+                            allowedPortsText.Append($"{startRange}-{endRange};");
                         }
 
                         startRange = port;
@@ -191,7 +192,6 @@ namespace NetworkSetup
                     }
                 }
 
-                // Додаємо останній діапазон
                 if (startRange == endRange)
                 {
                     allowedPortsText.Append($"{startRange}");
@@ -201,8 +201,7 @@ namespace NetworkSetup
                     allowedPortsText.Append($"{startRange}-{endRange}");
                 }
 
-                // Оновлюємо текст в textBoxAllowed
-                allowedTextBox.Text = allowedPortsText.ToString();
+                allowedTextBox.PlaceholderText = allowedPortsText.ToString().TrimEnd(';');
             }
         }
     }

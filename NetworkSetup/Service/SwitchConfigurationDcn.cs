@@ -1,19 +1,38 @@
 ﻿using NetworkSetup.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NetworkSetup.Service
 {
     public class SwitchConfigurationDcn
     {
         //Basic Info
-        public string HostName { get; set; } = string.Empty;
-        public string NtpServer { get; set; } = string.Empty;
-        
+        private string _hostName;
+        private string _ntpServer;
+
+        public string HostName
+        {
+            get => _hostName;
+            set
+            {
+                if (string.IsNullOrEmpty(_hostName))
+                {
+                    _hostName = value;
+                }
+            }
+        }
+
+        public string NtpServer
+        {
+            get => _ntpServer;
+            set
+            {
+                if (string.IsNullOrEmpty(_ntpServer))
+                {
+                    _ntpServer = value;
+                }
+            }
+        }
+
         //Account
         public List<Account> Accounts { get; set; } = new List<Account>();
 
@@ -22,12 +41,12 @@ namespace NetworkSetup.Service
 
         public List<string> command { get; set; } = new List<string>();
 
-        public void AddToCommand(string com) 
+        public void AddToCommand(string com)
         {
             command.Add(com);
         }
 
-        private void CommandForStart() 
+        private void CommandForStart()
         {
             command.Add($"enable");
             command.Add($"config");
@@ -47,16 +66,22 @@ namespace NetworkSetup.Service
             command.Add($"ip dhcp relay information option subscriber-id format hex");
 
             command.Add($"ip dhcp snooping enable");
-            command.Add($"ip dhcp snooping vlan ");
+            command.Add($"ip dhcp snooping vlan {GetSnoopingVlan}");
             command.Add($"ip dhcp snooping binding enable");
+
+            command.Add($"loopback-detection interval-time 35 15");
+            command.Add($"loopback-detection control-recovery timeout 600");
+
+            AddVlan();
+
 
         }
 
-        private string GetSnmpHosts() 
+        private string GetSnmpHosts()
         {
             var sb = new StringBuilder();
 
-            foreach(string host in SnmpHost) 
+            foreach (string host in SnmpHost)
             {
                 sb.AppendLine($"snmp-server host {host} v2c private");
             }
@@ -64,9 +89,32 @@ namespace NetworkSetup.Service
             return sb.ToString();
         }
 
-        private string GetSnoopingVlan() 
+        private string GetSnoopingVlan()
         {
-            return null;
+            var snoopingVlans = Vlans.Where(item => item.IsSnooping).Select(item => item.Id);
+            return string.Join(";", snoopingVlans);
+        }
+
+        private void AddVlan()
+        {
+            foreach (var item in Vlans)
+            {
+                command.Add($"Vlan {item.Id}");
+                command.Add($"name {item.Description}");
+                command.Add($"exit");
+
+                if (!string.IsNullOrEmpty(item.IpAddress))
+                {
+                    AddVlanInterface(item.Id, item.IpAddress);
+                }
+            }
+        }
+
+        private void AddVlanInterface(string id, string ip)
+        {
+            command.Add($"interface Vlan{id}");
+            command.Add($"ip address {ip} 255.255.255.0");
+            command.Add($"!");
         }
     }
 }

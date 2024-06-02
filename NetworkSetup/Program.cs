@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using NetworkSetup.Model;
 using NetworkSetup.Service;
 using System;
 
@@ -22,7 +23,8 @@ namespace NetworkSetup
         {
             services.AddTransient<Form1>();
             services.AddTransient<InputVlan>();
-            services.AddSingleton<SwitchConfigurationDcn>(); // Зареєструємо VlanService як Singleton
+            services.AddSingleton<SwitchConfigurationDcn>();
+            services.AddTransient<Logger>();
         }
     }
 }

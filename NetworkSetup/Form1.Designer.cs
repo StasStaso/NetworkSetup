@@ -462,6 +462,7 @@
             btn_AddSNMP.TabIndex = 6;
             btn_AddSNMP.Text = "Add";
             btn_AddSNMP.UseVisualStyleBackColor = true;
+            btn_AddSNMP.Click += btn_AddSNMP_Click;
             // 
             // textBox_HostSNMP
             // 
@@ -502,6 +503,7 @@
             btn_SaveBasicInfo.TabIndex = 4;
             btn_SaveBasicInfo.Text = "Save";
             btn_SaveBasicInfo.UseVisualStyleBackColor = true;
+            btn_SaveBasicInfo.Click += btn_SaveBasicInfo_Click;
             // 
             // textBox_NtpServer
             // 

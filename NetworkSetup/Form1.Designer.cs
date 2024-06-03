@@ -81,6 +81,7 @@
             textBox_UserName = new TextBox();
             panel2 = new Panel();
             groupBox10 = new GroupBox();
+            txtSerialNumberFile = new TextBox();
             btnChooseFile = new Button();
             txtSpeedProfiles = new TextBox();
             label12 = new Label();
@@ -103,7 +104,6 @@
             label3 = new Label();
             txtSerialNumber = new TextBox();
             label2 = new Label();
-            txtSerialNumberFile = new TextBox();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -632,6 +632,13 @@
             groupBox10.TabStop = false;
             groupBox10.Text = "ZTE-F601 Range(1-128)";
             // 
+            // txtSerialNumberFile
+            // 
+            txtSerialNumberFile.Location = new Point(91, 22);
+            txtSerialNumberFile.Name = "txtSerialNumberFile";
+            txtSerialNumberFile.Size = new Size(91, 23);
+            txtSerialNumberFile.TabIndex = 12;
+            // 
             // btnChooseFile
             // 
             btnChooseFile.Location = new Point(189, 21);
@@ -727,7 +734,7 @@
             // 
             groupBox9.Location = new Point(282, 3);
             groupBox9.Name = "groupBox9";
-            groupBox9.Size = new Size(202, 290);
+            groupBox9.Size = new Size(196, 290);
             groupBox9.TabIndex = 1;
             groupBox9.TabStop = false;
             groupBox9.Text = "ZTE ZXA10 C320";
@@ -838,13 +845,6 @@
             label2.Size = new Size(85, 15);
             label2.TabIndex = 0;
             label2.Text = "Serial Number:";
-            // 
-            // txtSerialNumberFile
-            // 
-            txtSerialNumberFile.Location = new Point(91, 22);
-            txtSerialNumberFile.Name = "txtSerialNumberFile";
-            txtSerialNumberFile.Size = new Size(91, 23);
-            txtSerialNumberFile.TabIndex = 12;
             // 
             // Form1
             // 

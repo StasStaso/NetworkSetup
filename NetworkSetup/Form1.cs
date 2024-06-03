@@ -1,6 +1,7 @@
 using NetworkSetup.Model;
 using NetworkSetup.Service;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace NetworkSetup
 {
@@ -134,8 +135,15 @@ namespace NetworkSetup
                 IsVlanAdd = true;
             }
 
+            if (!IsValidIPAddress(textBox_VlanIpAddress.Text) && !string.IsNullOrEmpty(textBox_VlanIpAddress.Text))
+            {
+                MessageBox.Show("Invalid IP Address");
+                return;
+            }
+
             bool vlanExists = _dcnConfig.Vlans
                 .Any(v => v.Id == textBox_VlanId.Text);
+
 
             if (!vlanExists && IsVlanAdd)
             {
@@ -149,13 +157,13 @@ namespace NetworkSetup
                 _logger.AddLog($"Vlan {textBox_VlanId.Text} has been add");
             }
 
-            if (IsVlanAdd == false && vlanExists)
+            if (comboBox_ActionVlan.SelectedIndex == 1)
             {
                 var removeVlan = _dcnConfig.Vlans.FirstOrDefault(x => x.Id == (textBox_VlanId.Text));
 
                 _dcnConfig.Vlans.Remove(removeVlan);
 
-                _logger.AddLog($"Vlan {removeVlan} has been remove");
+                _logger.AddLog($"Vlan {removeVlan.Id} has been remove");
             }
         }
 
@@ -252,6 +260,12 @@ namespace NetworkSetup
                     return;
                 }
 
+                if (!IsValidIPAddress(ntpServer))
+                {
+                    MessageBox.Show("Invalid IP Address");
+                    return;
+                }
+
                 if (string.IsNullOrEmpty(_dcnConfig.HostName) && string.IsNullOrEmpty(_dcnConfig.NtpServer))
                 {
                     _dcnConfig.HostName = hostName;
@@ -273,6 +287,12 @@ namespace NetworkSetup
                 if (string.IsNullOrEmpty(textBox_HostSNMP.Text))
                 {
                     MessageBox.Show("Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!IsValidIPAddress(textBox_HostSNMP.Text))
+                {
+                    MessageBox.Show("Invalid IP Address");
                     return;
                 }
 
@@ -413,6 +433,25 @@ namespace NetworkSetup
                     txtSerialNumberFile.Text = openFileDialog.FileName;
                 }
             }
+        }
+        private bool IsValidIPAddress(string ipAddress)
+        {
+            // –егул€рний вираз дл€ перев≥рки IPv4
+            string pattern = @"^(\d{1,3}\.){3}\d{1,3}$";
+            Regex regex = new Regex(pattern);
+            if (regex.IsMatch(ipAddress))
+            {
+                string[] parts = ipAddress.Split('.');
+                foreach (string part in parts)
+                {
+                    if (int.Parse(part) > 255)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
         }
     }
 }

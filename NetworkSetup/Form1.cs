@@ -49,6 +49,7 @@ namespace NetworkSetup
             PortCount = 28;
             UpdateComboBox(comboBoxInterface, PortCount);
             IsDCNSwitch = true;
+            _dcnConfig.command.Clear();
         }
 
         private void dCNS420052ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +57,7 @@ namespace NetworkSetup
             PortCount = 52;
             UpdateComboBox(comboBoxInterface, PortCount);
             IsDCNSwitch = true;
+            _dcnConfig.command.Clear();
         }
 
         private void dCNS460028PToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,6 +65,7 @@ namespace NetworkSetup
             PortCount = 28;
             UpdateComboBox(comboBoxInterface, PortCount);
             IsDCNSwitch = true;
+            _dcnConfig.command.Clear();
         }
 
         private void UpdateComboBox(ComboBox comboBox, int port)
@@ -299,6 +302,28 @@ namespace NetworkSetup
                 {
                     MessageBox.Show("An host with this address already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void btn_InterfaceModify_Click(object sender, EventArgs e)
+        {
+            if (IsDCNSwitch)
+            {
+                int interfaceId = comboBoxInterface.SelectedIndex + 1;
+                string speed = comboBox_InterfaceSpeed.Text;
+                string duplex = comboBox_InterfaceDuplex.Text;
+                string description = textBox_InterfaceDescription.Text;
+
+
+                string[] strings =
+                {
+                    $"interface Ethernet 1/0/{interfaceId}",                    
+                    $"speed-duplex {speed}-{duplex}",
+                    $"description {description}",
+                    $"exit"
+                };
+
+                _dcnConfig.InterfaceMoreConfig.AddRange(strings);
             }
         }
     }

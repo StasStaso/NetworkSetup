@@ -41,6 +41,8 @@ namespace NetworkSetup.Service
 
         public List<string> command { get; set; } = new List<string>();
 
+        public List<string> InterfaceMoreConfig { get; set; } = new List<string>();
+
         public void AddToCommand(string com)
         {
             command.Add(com);
@@ -97,6 +99,7 @@ namespace NetworkSetup.Service
         {
             CommandForStart();
             command.AddRange(portCommands);
+            command.AddRange(InterfaceMoreConfig);
             CommandForEnd();
         }
 

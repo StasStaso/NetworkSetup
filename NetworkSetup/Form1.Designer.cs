@@ -32,7 +32,6 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             fileToolStripMenuItem1 = new ToolStripMenuItem();
-            exitToolStripMenuItem = new ToolStripMenuItem();
             switchToolStripMenuItem = new ToolStripMenuItem();
             dCNS420028ToolStripMenuItem = new ToolStripMenuItem();
             dCNS420052ToolStripMenuItem = new ToolStripMenuItem();
@@ -42,9 +41,8 @@
             analizeToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             groupBox5 = new GroupBox();
+            btn_SaveToTXT = new Button();
             groupBox7 = new GroupBox();
-            label10 = new Label();
-            textBox_InterfaceInputVlan = new TextBox();
             btn_InterfaceModify = new Button();
             textBox_InterfaceDescription = new TextBox();
             comboBox_InterfaceDuplex = new ComboBox();
@@ -81,7 +79,6 @@
             btn_AddAccount = new Button();
             textBox_Password = new TextBox();
             textBox_UserName = new TextBox();
-            btn_SaveToTXT = new Button();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -99,7 +96,7 @@
             TextBoxLogs.Multiline = true;
             TextBoxLogs.Name = "TextBoxLogs";
             TextBoxLogs.ReadOnly = true;
-            TextBoxLogs.Size = new Size(270, 329);
+            TextBoxLogs.Size = new Size(270, 372);
             TextBoxLogs.TabIndex = 0;
             TextBoxLogs.Text = "***************************************************\r\n******************NetworkSetup******************\r\n***************************************************\r\n";
             TextBoxLogs.Enter += TextBoxLogs_Enter;
@@ -115,7 +112,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fileToolStripMenuItem1, exitToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fileToolStripMenuItem1 });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 20);
             fileToolStripMenuItem.Text = "File";
@@ -123,14 +120,8 @@
             // fileToolStripMenuItem1
             // 
             fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            fileToolStripMenuItem1.Size = new Size(93, 22);
-            fileToolStripMenuItem1.Text = "File";
-            // 
-            // exitToolStripMenuItem
-            // 
-            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(93, 22);
-            exitToolStripMenuItem.Text = "Exit";
+            fileToolStripMenuItem1.Size = new Size(180, 22);
+            fileToolStripMenuItem1.Text = "exit";
             // 
             // switchToolStripMenuItem
             // 
@@ -170,7 +161,7 @@
             // zTEF601ToolStripMenuItem
             // 
             zTEF601ToolStripMenuItem.Name = "zTEF601ToolStripMenuItem";
-            zTEF601ToolStripMenuItem.Size = new Size(122, 22);
+            zTEF601ToolStripMenuItem.Size = new Size(180, 22);
             zTEF601ToolStripMenuItem.Text = "ZTE-F601";
             // 
             // analizeToolStripMenuItem
@@ -193,6 +184,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(btn_SaveToTXT);
             groupBox5.Controls.Add(groupBox7);
             groupBox5.Controls.Add(comboBoxInterface);
             groupBox5.Controls.Add(button8);
@@ -203,10 +195,18 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Interface";
             // 
+            // btn_SaveToTXT
+            // 
+            btn_SaveToTXT.Location = new Point(6, 224);
+            btn_SaveToTXT.Name = "btn_SaveToTXT";
+            btn_SaveToTXT.Size = new Size(196, 28);
+            btn_SaveToTXT.TabIndex = 10;
+            btn_SaveToTXT.Text = "Save to TXT";
+            btn_SaveToTXT.UseVisualStyleBackColor = true;
+            btn_SaveToTXT.Click += btn_SaveToTXT_Click;
+            // 
             // groupBox7
             // 
-            groupBox7.Controls.Add(label10);
-            groupBox7.Controls.Add(textBox_InterfaceInputVlan);
             groupBox7.Controls.Add(btn_InterfaceModify);
             groupBox7.Controls.Add(textBox_InterfaceDescription);
             groupBox7.Controls.Add(comboBox_InterfaceDuplex);
@@ -215,44 +215,27 @@
             groupBox7.Controls.Add(label8);
             groupBox7.Location = new Point(6, 55);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(196, 163);
+            groupBox7.Size = new Size(196, 134);
             groupBox7.TabIndex = 9;
             groupBox7.TabStop = false;
             groupBox7.Text = "Interface config";
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(7, 78);
-            label10.Name = "label10";
-            label10.Size = new Size(33, 15);
-            label10.TabIndex = 14;
-            label10.Text = "Vlan:";
-            label10.TextAlign = ContentAlignment.TopRight;
-            // 
-            // textBox_InterfaceInputVlan
-            // 
-            textBox_InterfaceInputVlan.Location = new Point(54, 75);
-            textBox_InterfaceInputVlan.Name = "textBox_InterfaceInputVlan";
-            textBox_InterfaceInputVlan.PlaceholderText = "2;10;201";
-            textBox_InterfaceInputVlan.Size = new Size(136, 23);
-            textBox_InterfaceInputVlan.TabIndex = 13;
-            // 
             // btn_InterfaceModify
             // 
-            btn_InterfaceModify.Location = new Point(6, 133);
+            btn_InterfaceModify.Location = new Point(6, 104);
             btn_InterfaceModify.Name = "btn_InterfaceModify";
-            btn_InterfaceModify.Size = new Size(183, 23);
+            btn_InterfaceModify.Size = new Size(184, 23);
             btn_InterfaceModify.TabIndex = 10;
             btn_InterfaceModify.Text = "Modify";
             btn_InterfaceModify.UseVisualStyleBackColor = true;
+            btn_InterfaceModify.Click += btn_InterfaceModify_Click;
             // 
             // textBox_InterfaceDescription
             // 
-            textBox_InterfaceDescription.Location = new Point(6, 104);
+            textBox_InterfaceDescription.Location = new Point(7, 75);
             textBox_InterfaceDescription.Name = "textBox_InterfaceDescription";
             textBox_InterfaceDescription.PlaceholderText = "Description";
-            textBox_InterfaceDescription.Size = new Size(184, 23);
+            textBox_InterfaceDescription.Size = new Size(183, 23);
             textBox_InterfaceDescription.TabIndex = 5;
             // 
             // comboBox_InterfaceDuplex
@@ -277,7 +260,7 @@
             // comboBox_InterfaceSpeed
             // 
             comboBox_InterfaceSpeed.FormattingEnabled = true;
-            comboBox_InterfaceSpeed.Items.AddRange(new object[] { "auto", "10", "100", "1G" });
+            comboBox_InterfaceSpeed.Items.AddRange(new object[] { "10", "100", "1g" });
             comboBox_InterfaceSpeed.Location = new Point(54, 17);
             comboBox_InterfaceSpeed.Name = "comboBox_InterfaceSpeed";
             comboBox_InterfaceSpeed.Size = new Size(136, 23);
@@ -305,11 +288,11 @@
             // 
             // button8
             // 
-            button8.Location = new Point(6, 224);
+            button8.Location = new Point(6, 195);
             button8.Name = "button8";
-            button8.Size = new Size(196, 28);
+            button8.Size = new Size(196, 23);
             button8.TabIndex = 7;
-            button8.Text = "Config Port";
+            button8.Text = "Interface";
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
             // 
@@ -589,22 +572,11 @@
             textBox_UserName.Size = new Size(136, 23);
             textBox_UserName.TabIndex = 3;
             // 
-            // btn_SaveToTXT
-            // 
-            btn_SaveToTXT.Location = new Point(502, 361);
-            btn_SaveToTXT.Name = "btn_SaveToTXT";
-            btn_SaveToTXT.Size = new Size(270, 38);
-            btn_SaveToTXT.TabIndex = 10;
-            btn_SaveToTXT.Text = "Save to TXT";
-            btn_SaveToTXT.UseVisualStyleBackColor = true;
-            btn_SaveToTXT.Click += btn_SaveToTXT_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 411);
-            Controls.Add(btn_SaveToTXT);
             Controls.Add(panel1);
             Controls.Add(TextBoxLogs);
             Controls.Add(menuStrip1);
@@ -637,7 +609,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem fileToolStripMenuItem1;
-        private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem switchToolStripMenuItem;
         private ToolStripMenuItem dCNS420028ToolStripMenuItem;
         private ToolStripMenuItem dCNS420052ToolStripMenuItem;
@@ -684,8 +655,6 @@
         private Label label9;
         private ComboBox comboBox_InterfaceSpeed;
         private Label label8;
-        private Label label10;
-        private TextBox textBox_InterfaceInputVlan;
         private Button btn_SaveToTXT;
     }
 }

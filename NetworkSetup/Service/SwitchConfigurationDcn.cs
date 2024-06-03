@@ -93,6 +93,7 @@ namespace NetworkSetup.Service
 
             command.Add($"exit");
             command.Add($"exit");
+            command.Add($"write");
         }
 
         public void AddPortCommands(List<string> portCommands)

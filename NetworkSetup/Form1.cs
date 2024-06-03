@@ -51,6 +51,7 @@ namespace NetworkSetup
             IsDCNSwitch = true;
             _dcnConfig.command.Clear();
             panel1.Visible = true;
+            panel2.Visible = false;
         }
 
         private void dCNS420052ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,6 +60,7 @@ namespace NetworkSetup
             UpdateComboBox(comboBoxInterface, PortCount);
             IsDCNSwitch = true;
             _dcnConfig.command.Clear();
+            panel2.Visible = false;
             panel1.Visible = true;
         }
 
@@ -69,6 +71,7 @@ namespace NetworkSetup
             IsDCNSwitch = true;
             _dcnConfig.command.Clear();
             panel1.Visible = true;
+            panel2.Visible = false;
         }
 
         private void UpdateComboBox(ComboBox comboBox, int port)
@@ -191,29 +194,8 @@ namespace NetworkSetup
         {
             if (IsDCNSwitch)
             {
-                string path = $"..\\..\\..\\{_dcnConfig.HostName}.txt";
-
-                CreateAndWriteToFile(path, _dcnConfig.GetCommand());
-            }
-        }
-
-        static void CreateAndWriteToFile(string path, List<string> lines)
-        {
-            try
-            {
-                if (!File.Exists(path))
-                {
-                    using (FileStream fs = File.Create(path))
-                    {
-                        fs.Close();
-                    }
-                }
-
-                File.WriteAllLines(path, lines);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Помилка при записі до файлу: {ex.Message}");
+                string command = string.Join(Environment.NewLine, _dcnConfig.GetCommand());
+                SaveToFile(command);
             }
         }
 
@@ -333,6 +315,60 @@ namespace NetworkSetup
         private void zTEF601ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            panel2.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Передбачаємо формат VLAN5, де VLAN - назва, а 5 - ID
+                string vlanText = txtVlan.Text;
+                int vlanId = int.Parse(new string(vlanText.Where(char.IsDigit).ToArray()));
+                string vlanName = vlanText;  // Використовуємо весь введений текст як назву
+
+                // Розділяємо Position по ':'
+                string positionText = txtPosition.Text;
+                string[] positionParts = positionText.Split(':');
+                if (positionParts.Length != 2)
+                {
+                    throw new FormatException("Position should be in format '1/1/1:1'");
+                }
+
+                var model = new ZTEF601Model
+                {
+                    SerialNumber = txtSerialNumber.Text,
+                    VlanName = vlanName,
+                    VlanId = vlanId,
+                    Position = txtPosition.Text,
+                    SpeedProfile = txtSpeedProfile.Text,
+                    DhcpOption82 = chkDhcpOption82.Checked
+                };
+
+                var service = new ZTEF601Service();
+                string configText = service.GenerateConfig(model);
+
+                SaveToFile(configText);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error processing input: " + ex.Message);
+            }
+        }
+
+        private void SaveToFile(string text)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                sfd.FilterIndex = 1;
+                sfd.RestoreDirectory = true;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(sfd.FileName, text);
+                }
+            }
         }
     }
 }

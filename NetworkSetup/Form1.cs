@@ -50,6 +50,7 @@ namespace NetworkSetup
             UpdateComboBox(comboBoxInterface, PortCount);
             IsDCNSwitch = true;
             _dcnConfig.command.Clear();
+            panel1.Visible = true;
         }
 
         private void dCNS420052ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,6 +59,7 @@ namespace NetworkSetup
             UpdateComboBox(comboBoxInterface, PortCount);
             IsDCNSwitch = true;
             _dcnConfig.command.Clear();
+            panel1.Visible = true;
         }
 
         private void dCNS460028PToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,6 +68,7 @@ namespace NetworkSetup
             UpdateComboBox(comboBoxInterface, PortCount);
             IsDCNSwitch = true;
             _dcnConfig.command.Clear();
+            panel1.Visible = true;
         }
 
         private void UpdateComboBox(ComboBox comboBox, int port)
@@ -317,7 +320,7 @@ namespace NetworkSetup
 
                 string[] strings =
                 {
-                    $"interface Ethernet 1/0/{interfaceId}",                    
+                    $"interface Ethernet 1/0/{interfaceId}",
                     $"speed-duplex {speed}-{duplex}",
                     $"description {description}",
                     $"exit"
@@ -325,6 +328,11 @@ namespace NetworkSetup
 
                 _dcnConfig.InterfaceMoreConfig.AddRange(strings);
             }
+        }
+
+        private void zTEF601ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
         }
     }
 }

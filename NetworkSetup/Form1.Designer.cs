@@ -120,7 +120,7 @@
             // fileToolStripMenuItem1
             // 
             fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            fileToolStripMenuItem1.Size = new Size(180, 22);
+            fileToolStripMenuItem1.Size = new Size(93, 22);
             fileToolStripMenuItem1.Text = "exit";
             // 
             // switchToolStripMenuItem
@@ -161,8 +161,9 @@
             // zTEF601ToolStripMenuItem
             // 
             zTEF601ToolStripMenuItem.Name = "zTEF601ToolStripMenuItem";
-            zTEF601ToolStripMenuItem.Size = new Size(180, 22);
-            zTEF601ToolStripMenuItem.Text = "ZTE-F601";
+            zTEF601ToolStripMenuItem.Size = new Size(215, 22);
+            zTEF601ToolStripMenuItem.Text = "ZTE-F601(ZTE ZXA10 C320)";
+            zTEF601ToolStripMenuItem.Click += zTEF601ToolStripMenuItem_Click;
             // 
             // analizeToolStripMenuItem
             // 

@@ -8,6 +8,7 @@ namespace NetworkSetup
     {
         private readonly SwitchConfigurationDcn _dcnConfig;
         private readonly Logger _logger;
+        private ZTEF601Service _service;
 
         private bool IsVlanAdd = true;
         private bool IsDCNSwitch = false;
@@ -22,6 +23,7 @@ namespace NetworkSetup
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
 
+            _service = new ZTEF601Service();
 
             this.MinimumSize = new Size(this.Width, this.Height);
             this.MaximumSize = new Size(this.Width, this.Height);
@@ -367,6 +369,48 @@ namespace NetworkSetup
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(sfd.FileName, text);
+                }
+            }
+        }
+
+        private void btnSaveToTXT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string filePath = txtSerialNumberFile.Text;
+                string position = txtPositions.Text;
+                string speedProfile = txtSpeedProfiles.Text;
+                string vlanName = txtVlans.Text;
+                int vlanId = int.Parse(vlanName.Substring(4)); // Assuming VLAN5 => 5
+                bool dhcpOption82 = chkDhcpOption82s.Checked;
+
+                string config = _service.GenerateMultiConfig(filePath, position, speedProfile, vlanName, vlanId, dhcpOption82);
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        File.WriteAllText(saveFileDialog.FileName, config);
+                        MessageBox.Show("Configuration saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    txtSerialNumberFile.Text = openFileDialog.FileName;
                 }
             }
         }

@@ -80,6 +80,17 @@
             textBox_Password = new TextBox();
             textBox_UserName = new TextBox();
             panel2 = new Panel();
+            groupBox10 = new GroupBox();
+            btnChooseFile = new Button();
+            txtSpeedProfiles = new TextBox();
+            label12 = new Label();
+            btnSaveToTXT = new Button();
+            chkDhcpOption82s = new CheckBox();
+            label13 = new Label();
+            txtPositions = new TextBox();
+            txtVlans = new TextBox();
+            label14 = new Label();
+            label15 = new Label();
             groupBox9 = new GroupBox();
             groupBox8 = new GroupBox();
             txtSpeedProfile = new TextBox();
@@ -92,6 +103,7 @@
             label3 = new Label();
             txtSerialNumber = new TextBox();
             label2 = new Label();
+            txtSerialNumberFile = new TextBox();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -102,6 +114,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
+            groupBox10.SuspendLayout();
             groupBox8.SuspendLayout();
             SuspendLayout();
             // 
@@ -591,6 +604,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(groupBox10);
             panel2.Controls.Add(groupBox9);
             panel2.Controls.Add(groupBox8);
             panel2.Location = new Point(6, 27);
@@ -598,11 +612,122 @@
             panel2.Size = new Size(490, 372);
             panel2.TabIndex = 3;
             // 
+            // groupBox10
+            // 
+            groupBox10.Controls.Add(txtSerialNumberFile);
+            groupBox10.Controls.Add(btnChooseFile);
+            groupBox10.Controls.Add(txtSpeedProfiles);
+            groupBox10.Controls.Add(label12);
+            groupBox10.Controls.Add(btnSaveToTXT);
+            groupBox10.Controls.Add(chkDhcpOption82s);
+            groupBox10.Controls.Add(label13);
+            groupBox10.Controls.Add(txtPositions);
+            groupBox10.Controls.Add(txtVlans);
+            groupBox10.Controls.Add(label14);
+            groupBox10.Controls.Add(label15);
+            groupBox10.Location = new Point(6, 151);
+            groupBox10.Name = "groupBox10";
+            groupBox10.Size = new Size(270, 142);
+            groupBox10.TabIndex = 2;
+            groupBox10.TabStop = false;
+            groupBox10.Text = "ZTE-F601 Range(1-128)";
+            // 
+            // btnChooseFile
+            // 
+            btnChooseFile.Location = new Point(189, 21);
+            btnChooseFile.Name = "btnChooseFile";
+            btnChooseFile.Size = new Size(75, 23);
+            btnChooseFile.TabIndex = 11;
+            btnChooseFile.Text = "Choose file with SN";
+            btnChooseFile.UseVisualStyleBackColor = true;
+            btnChooseFile.Click += btnChooseFile_Click;
+            // 
+            // txtSpeedProfiles
+            // 
+            txtSpeedProfiles.Location = new Point(91, 108);
+            txtSpeedProfiles.Name = "txtSpeedProfiles";
+            txtSpeedProfiles.PlaceholderText = "gpon";
+            txtSpeedProfiles.Size = new Size(75, 23);
+            txtSpeedProfiles.TabIndex = 10;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(6, 112);
+            label12.Name = "label12";
+            label12.Size = new Size(79, 15);
+            label12.TabIndex = 9;
+            label12.Text = "Speed profile:";
+            // 
+            // btnSaveToTXT
+            // 
+            btnSaveToTXT.Location = new Point(172, 93);
+            btnSaveToTXT.Name = "btnSaveToTXT";
+            btnSaveToTXT.Size = new Size(91, 38);
+            btnSaveToTXT.TabIndex = 8;
+            btnSaveToTXT.Text = "Save to TXT";
+            btnSaveToTXT.UseVisualStyleBackColor = true;
+            btnSaveToTXT.Click += btnSaveToTXT_Click;
+            // 
+            // chkDhcpOption82s
+            // 
+            chkDhcpOption82s.AutoSize = true;
+            chkDhcpOption82s.CheckAlign = ContentAlignment.BottomCenter;
+            chkDhcpOption82s.Location = new Point(172, 54);
+            chkDhcpOption82s.Name = "chkDhcpOption82s";
+            chkDhcpOption82s.Size = new Size(91, 33);
+            chkDhcpOption82s.TabIndex = 7;
+            chkDhcpOption82s.Text = "Dhcp-option82";
+            chkDhcpOption82s.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(6, 79);
+            label13.Name = "label13";
+            label13.Size = new Size(53, 15);
+            label13.TabIndex = 5;
+            label13.Text = "Position:";
+            // 
+            // txtPositions
+            // 
+            txtPositions.Location = new Point(65, 76);
+            txtPositions.Name = "txtPositions";
+            txtPositions.PlaceholderText = "1/1/1:1";
+            txtPositions.Size = new Size(101, 23);
+            txtPositions.TabIndex = 4;
+            // 
+            // txtVlans
+            // 
+            txtVlans.Location = new Point(45, 50);
+            txtVlans.Name = "txtVlans";
+            txtVlans.PlaceholderText = "VLAN5";
+            txtVlans.Size = new Size(121, 23);
+            txtVlans.TabIndex = 3;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(6, 54);
+            label14.Name = "label14";
+            label14.Size = new Size(33, 15);
+            label14.TabIndex = 2;
+            label14.Text = "Vlan:";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(0, 24);
+            label15.Name = "label15";
+            label15.Size = new Size(85, 15);
+            label15.TabIndex = 0;
+            label15.Text = "Serial Number:";
+            // 
             // groupBox9
             // 
-            groupBox9.Location = new Point(6, 166);
+            groupBox9.Location = new Point(282, 3);
             groupBox9.Name = "groupBox9";
-            groupBox9.Size = new Size(478, 197);
+            groupBox9.Size = new Size(202, 290);
             groupBox9.TabIndex = 1;
             groupBox9.TabStop = false;
             groupBox9.Text = "ZTE ZXA10 C320";
@@ -714,6 +839,13 @@
             label2.TabIndex = 0;
             label2.Text = "Serial Number:";
             // 
+            // txtSerialNumberFile
+            // 
+            txtSerialNumberFile.Location = new Point(91, 22);
+            txtSerialNumberFile.Name = "txtSerialNumberFile";
+            txtSerialNumberFile.Size = new Size(91, 23);
+            txtSerialNumberFile.TabIndex = 12;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -743,6 +875,8 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel2.ResumeLayout(false);
+            groupBox10.ResumeLayout(false);
+            groupBox10.PerformLayout();
             groupBox8.ResumeLayout(false);
             groupBox8.PerformLayout();
             ResumeLayout(false);
@@ -815,5 +949,17 @@
         private Button button1;
         private TextBox txtSpeedProfile;
         private Label label11;
+        private GroupBox groupBox10;
+        private TextBox txtSpeedProfiles;
+        private Label label12;
+        private Button btnSaveToTXT;
+        private CheckBox chkDhcpOption82s;
+        private Label label13;
+        private TextBox txtPositions;
+        private TextBox txtVlans;
+        private Label label14;
+        private Label label15;
+        private Button btnChooseFile;
+        private TextBox txtSerialNumberFile;
     }
 }

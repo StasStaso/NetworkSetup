@@ -611,6 +611,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(490, 372);
             panel2.TabIndex = 3;
+            panel2.Visible = false;
             // 
             // groupBox10
             // 
@@ -700,7 +701,7 @@
             // 
             txtPositions.Location = new Point(65, 76);
             txtPositions.Name = "txtPositions";
-            txtPositions.PlaceholderText = "1/1/1:1";
+            txtPositions.PlaceholderText = "1/1/1:1-128";
             txtPositions.Size = new Size(101, 23);
             txtPositions.TabIndex = 4;
             // 

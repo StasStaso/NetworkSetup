@@ -79,6 +79,11 @@ namespace NetworkSetup.Service
             command.Add($"ip dhcp snooping vlan {GetSnoopingVlan()}");
             command.Add($"ip dhcp snooping binding enable");
 
+            command.Add($"ip dhcp snooping information enable");
+            command.Add($"ip dhcp snooping information option allow-untrusted");
+            command.Add($"ip dhcp snooping information option remote-id vs-cisco");
+            command.Add($"ip dhcp snooping information option self-defined subscriber-id vlan port");
+
             command.Add($"loopback-detection interval-time 35 15");
             command.Add($"loopback-detection control-recovery timeout 600");
 

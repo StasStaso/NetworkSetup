@@ -330,6 +330,7 @@ namespace NetworkSetup
                     $"exit"
                 };
 
+                _logger.AddLog($"interface 1/0/{interfaceId} is modified");
                 _dcnConfig.InterfaceMoreConfig.AddRange(strings);
             }
         }

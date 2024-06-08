@@ -38,7 +38,6 @@
             dCNS460028PToolStripMenuItem = new ToolStripMenuItem();
             onuToolStripMenuItem = new ToolStripMenuItem();
             zTEF601ToolStripMenuItem = new ToolStripMenuItem();
-            analizeToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             groupBox5 = new GroupBox();
             btn_SaveToTXT = new Button();
@@ -131,7 +130,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, switchToolStripMenuItem, onuToolStripMenuItem, analizeToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, switchToolStripMenuItem, onuToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(784, 24);
@@ -161,21 +160,21 @@
             // dCNS420028ToolStripMenuItem
             // 
             dCNS420028ToolStripMenuItem.Name = "dCNS420028ToolStripMenuItem";
-            dCNS420028ToolStripMenuItem.Size = new Size(158, 22);
+            dCNS420028ToolStripMenuItem.Size = new Size(180, 22);
             dCNS420028ToolStripMenuItem.Text = "DCN-S4200-28P";
             dCNS420028ToolStripMenuItem.Click += dCNS420028ToolStripMenuItem_Click;
             // 
             // dCNS420052ToolStripMenuItem
             // 
             dCNS420052ToolStripMenuItem.Name = "dCNS420052ToolStripMenuItem";
-            dCNS420052ToolStripMenuItem.Size = new Size(158, 22);
+            dCNS420052ToolStripMenuItem.Size = new Size(180, 22);
             dCNS420052ToolStripMenuItem.Text = "DCN-S4600-52P";
             dCNS420052ToolStripMenuItem.Click += dCNS420052ToolStripMenuItem_Click;
             // 
             // dCNS460028PToolStripMenuItem
             // 
             dCNS460028PToolStripMenuItem.Name = "dCNS460028PToolStripMenuItem";
-            dCNS460028PToolStripMenuItem.Size = new Size(158, 22);
+            dCNS460028PToolStripMenuItem.Size = new Size(180, 22);
             dCNS460028PToolStripMenuItem.Text = "DCN-S4600-28P";
             dCNS460028PToolStripMenuItem.Click += dCNS460028PToolStripMenuItem_Click;
             // 
@@ -192,12 +191,6 @@
             zTEF601ToolStripMenuItem.Size = new Size(247, 22);
             zTEF601ToolStripMenuItem.Text = "ZTE-F601(ZTE ZXA10 C320 Gpon)";
             zTEF601ToolStripMenuItem.Click += zTEF601ToolStripMenuItem_Click;
-            // 
-            // analizeToolStripMenuItem
-            // 
-            analizeToolStripMenuItem.Name = "analizeToolStripMenuItem";
-            analizeToolStripMenuItem.Size = new Size(57, 20);
-            analizeToolStripMenuItem.Text = "Analize";
             // 
             // panel1
             // 
@@ -896,7 +889,6 @@
         private ToolStripMenuItem dCNS460028PToolStripMenuItem;
         private ToolStripMenuItem onuToolStripMenuItem;
         private ToolStripMenuItem zTEF601ToolStripMenuItem;
-        private ToolStripMenuItem analizeToolStripMenuItem;
         private Panel panel1;
         private GroupBox groupBox1;
         private TextBox textBox_Password;

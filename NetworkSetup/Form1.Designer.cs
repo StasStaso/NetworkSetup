@@ -160,21 +160,21 @@
             // dCNS420028ToolStripMenuItem
             // 
             dCNS420028ToolStripMenuItem.Name = "dCNS420028ToolStripMenuItem";
-            dCNS420028ToolStripMenuItem.Size = new Size(180, 22);
+            dCNS420028ToolStripMenuItem.Size = new Size(158, 22);
             dCNS420028ToolStripMenuItem.Text = "DCN-S4200-28P";
             dCNS420028ToolStripMenuItem.Click += dCNS420028ToolStripMenuItem_Click;
             // 
             // dCNS420052ToolStripMenuItem
             // 
             dCNS420052ToolStripMenuItem.Name = "dCNS420052ToolStripMenuItem";
-            dCNS420052ToolStripMenuItem.Size = new Size(180, 22);
+            dCNS420052ToolStripMenuItem.Size = new Size(158, 22);
             dCNS420052ToolStripMenuItem.Text = "DCN-S4600-52P";
             dCNS420052ToolStripMenuItem.Click += dCNS420052ToolStripMenuItem_Click;
             // 
             // dCNS460028PToolStripMenuItem
             // 
             dCNS460028PToolStripMenuItem.Name = "dCNS460028PToolStripMenuItem";
-            dCNS460028PToolStripMenuItem.Size = new Size(180, 22);
+            dCNS460028PToolStripMenuItem.Size = new Size(158, 22);
             dCNS460028PToolStripMenuItem.Text = "DCN-S4600-28P";
             dCNS460028PToolStripMenuItem.Click += dCNS460028PToolStripMenuItem_Click;
             // 
@@ -591,7 +591,7 @@
             // 
             textBox_UserName.Location = new Point(6, 17);
             textBox_UserName.Name = "textBox_UserName";
-            textBox_UserName.PlaceholderText = "Username";
+            textBox_UserName.PlaceholderText = "Login";
             textBox_UserName.Size = new Size(136, 23);
             textBox_UserName.TabIndex = 3;
             // 
@@ -600,7 +600,7 @@
             panel2.Controls.Add(groupBox10);
             panel2.Controls.Add(groupBox9);
             panel2.Controls.Add(groupBox8);
-            panel2.Location = new Point(6, 27);
+            panel2.Location = new Point(12, 27);
             panel2.Name = "panel2";
             panel2.Size = new Size(490, 372);
             panel2.TabIndex = 3;

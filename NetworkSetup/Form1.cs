@@ -344,14 +344,13 @@ namespace NetworkSetup
         {
             try
             {
-                // Передбачаємо формат VLAN5, де VLAN - назва, а 5 - ID
                 string vlanText = txtVlan.Text;
                 int vlanId = int.Parse(new string(vlanText.Where(char.IsDigit).ToArray()));
-                string vlanName = vlanText;  // Використовуємо весь введений текст як назву
+                string vlanName = vlanText;  
 
-                // Розділяємо Position по ':'
                 string positionText = txtPosition.Text;
                 string[] positionParts = positionText.Split(':');
+
                 if (positionParts.Length != 2)
                 {
                     throw new FormatException("Position should be in format '1/1/1:1'");

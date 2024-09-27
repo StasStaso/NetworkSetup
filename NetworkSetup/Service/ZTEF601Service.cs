@@ -8,8 +8,8 @@ namespace NetworkSetup.Service
         public string GenerateConfig(ZTEF601Model model)
         {
             string[] positionParts = model.Position.Split(':');
-            string oltPosition = positionParts[0];  // "1/1/1"
-            string onuId = positionParts.Length > 1 ? positionParts[1] : "1";  // "1"
+            string oltPosition = positionParts[0];
+            string onuId = positionParts.Length > 1 ? positionParts[1] : "1";  
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"interface gpon-olt_{oltPosition}");
@@ -34,8 +34,8 @@ namespace NetworkSetup.Service
         public string GenerateConfigRange(ZTEF601Model model)
         {
             string[] positionParts = model.Position.Split(':');
-            string oltPosition = positionParts[0];  // "1/1/1"
-            string onuId = positionParts.Length > 1 ? positionParts[1] : "1";  // "1"
+            string oltPosition = positionParts[0];  
+            string onuId = positionParts.Length > 1 ? positionParts[1] : "1";  
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("!");

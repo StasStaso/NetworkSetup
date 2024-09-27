@@ -1,6 +1,5 @@
 using NetworkSetup.Model;
 using NetworkSetup.Service;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace NetworkSetup
@@ -437,7 +436,6 @@ namespace NetworkSetup
         }
         private bool IsValidIPAddress(string ipAddress)
         {
-            // –егул€рний вираз дл€ перев≥рки IPv4
             string pattern = @"^(\d{1,3}\.){3}\d{1,3}$";
             Regex regex = new Regex(pattern);
             if (regex.IsMatch(ipAddress))
